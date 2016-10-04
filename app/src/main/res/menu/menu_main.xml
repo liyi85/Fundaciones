@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action_logout"
+        android:title="@string/verbebes.menu.action.signoff"
+        android:orderInCategory="100"/>
+    <item
+        android:id="@+id/action_show_fav"
+        android:title="@string/fav"
+        android:icon="@android:drawable/btn_star_big_on"
+        app:showAsAction="always" />
+
+</menu>

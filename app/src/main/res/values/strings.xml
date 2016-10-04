@@ -1,0 +1,77 @@
+<resources>
+    <string name="app_name">Fundaciones</string>
+    <string name="loging.message.email">Correo</string>
+    <string name="loging.message.password">Contraseña</string>
+    <string name="loging.button.singin">Inicia Sesión</string>
+    <string name="loging.button.gotosignup">ir a Crear Cuenta</string>
+
+    <string name="loging.error.messagge.signin">Imposible iniciar sesion %s</string>
+    <string name="loging.error.messagge.signup">Imposible crear nuevo usuario %s</string>
+    <string name="loging.notice.signin">Usuario agregado exitosamente</string>
+    <string name="loging.message.nombrefundacion">Fundación</string>
+    <string name="loging.message.direccion">Dirección</string>
+    <string name="loging.message.telefono">Teléfono</string>
+    <string name="loging.message.nit">Nit</string>
+    <string name="loging.message.representante">Persona de Contacto</string>
+    <string name="signup.button.signup">Crear Cuenta</string>
+
+    <string name="verbebes.menu.action.signoff">Cerrar sesión</string>
+    <string name="signup_registro_completo">Gracias!</string>
+    <string name="err_msg_name">No puede estar vacio</string>
+    <string name="err_msg_email">Correo no valido</string>
+    <string name="err_msg_password">Ingrese una contraseña</string>
+    <string name="err_msg_phone">Ingrese número telefónico</string>
+    <string name="err_msg_nit">Ingrese nit o numero de cedula</string>
+    <string name="err_msg_direccion">No puede estar vacio</string>
+    <string name="err_msg_representante">Ingrese nombre del representante legal</string>
+
+    <string name="main.titles.perros">Perros</string>
+    <string name="main.title.gatos">Gatos</string>
+    <string name="main.title.otros">Otros</string>
+    <string name="main.title.perdidos">Perdidos y encontrados</string>
+    <string name="main.notice.upload.init">En proceso de publicación</string>
+    <string name="main.notice.upload.complete">Publicado exitosamente</string>
+    <string name="main.error.dispatch.camera">Error al crear archivo</string>
+    <string name="menu.action.logout">Cerrar sesión</string>
+    <string name="main.mesage.picture.source">Seleccione una foto</string>
+
+    <string name="search">Buscar</string>
+    <string name="fav">Favoritos</string>
+    <string name="verbebes.menu.action.about">Sobre</string>
+
+    <string name="addcontact.messagge.title">Agregar Perro</string>
+    <string name="addcontact.messagge.add">Aceptar</string>
+    <string name="addcontact.messagge.cancel">Cancel</string>
+    <string name="photolist_message_share">compartido</string>
+    <string name="perroClick">perro click</string>
+
+    <string name="main_message_picture_source">Selecciona una foto</string>
+
+    <string-array name="SelectEsteril">
+        <item>Si</item>
+        <item>No</item>
+    </string-array>
+
+    <string-array name="SelectTamano">
+        <item>Pequeño hasta 10kg</item>
+        <item>Mediano entre 11-20kg</item>
+        <item>Grande entre 21-29kg</item>
+        <item>MuyGrande más de 30kg</item>
+    </string-array>
+
+    <string-array name="SelectSexo">
+        <item>Hembra</item>
+        <item>Macho</item>
+    </string-array>
+
+    <string-array name="SelectVacuna">
+        <item>Si</item>
+        <item>No</item>
+    </string-array>
+
+    <string-array name="SelectEdad">
+        <item>Años</item>
+        <item>Meses</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="1dp"
+    >
+
+    <android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:cardView="http://schemas.android.com/apk/res-auto"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cv"
+        cardView:cardCornerRadius="4dp"
+        android:layout_gravity="center"
+        android:clickable="true"
+        cardView:cardElevation="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            >
+
+            <ImageView
+                android:layout_width="140dp"
+                android:layout_height="110dp"
+                android:id="@+id/imgDog"
+
+                android:src="@mipmap/ic_launcher"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/txtNombre"
+                android:layout_width="@dimen/largo_row_perro"
+
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/imgDog"
+                android:hint="Nombre"
+                android:textColor="@android:color/black"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/txtSexo"
+                android:layout_width="@dimen/largo_row_perro"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/txtNombre"
+                android:layout_alignStart="@+id/txtNombre"
+                android:layout_below="@+id/txtNombre"
+                android:hint="Sexo"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <TextView
+                android:id="@+id/txtEdad"
+                android:layout_width="@dimen/largo_row_perro"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/txtSexo"
+                android:layout_alignStart="@+id/txtSexo"
+                android:layout_below="@+id/txtSexo"
+                android:hint="Edad"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+            <TextView
+                android:id="@+id/txtTamano"
+                android:layout_width="@dimen/largo_row_perro"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/txtEdad"
+                android:layout_alignStart="@+id/txtEdad"
+                android:layout_below="@+id/txtEdad"
+                android:hint="Tamaño"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_menu_share"
+                android:background="@android:color/transparent"
+                android:id="@+id/imgShare"
+                android:layout_below="@+id/txtTamano"
+                android:layout_alignLeft="@+id/txtTamano"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:src="@android:drawable/ic_menu_delete"
+                android:id="@+id/imgDelete"
+                android:layout_toRightOf="@+id/imgShare"
+                android:layout_toEndOf="@+id/imgShare"
+                android:layout_below="@+id/txtTamano"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
