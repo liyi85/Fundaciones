@@ -7,14 +7,15 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-import com.example.andrearodriguez.fundaciones.main.ui.MainActivity;
 import com.example.andrearodriguez.fundaciones.R;
+import com.example.andrearodriguez.fundaciones.main.ui.MainActivity;
 
 /**
  * Created by andrearodriguez on 9/21/16.
  */
 public class SplashScreenActivity extends Activity{
     ImageView imageView;
+
 
 //    private static final long SPLASH_SCREEN_DELAY = 3000;
 
@@ -27,6 +28,7 @@ public class SplashScreenActivity extends Activity{
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.splash_animation);
         imageView.setAnimation(animation);
 
+
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
@@ -35,6 +37,7 @@ public class SplashScreenActivity extends Activity{
 
             @Override
             public void onAnimationEnd(Animation animation) {
+
 
                 startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
                 finish();

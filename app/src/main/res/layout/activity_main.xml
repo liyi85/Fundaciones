@@ -7,7 +7,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".main.ui.MainActivity">
+    tools:context=".main.ui.MainActivity"
+    android:background="#E2E2E2"
+    android:verticalScrollbarPosition="defaultPosition">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -27,105 +29,183 @@
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="20dp"
-        android:id="@+id/txtarriba"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         android:layout_below="@+id/appbar">
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Perros"
-            android:layout_weight="1"
-            android:layout_marginLeft="3dp"/>
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Gatos"
-            android:layout_weight="1"
-            android:layout_marginLeft="3dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.05"
+            android:orientation="horizontal">
 
-    </TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Perros"
 
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="240dp"
-        android:id="@+id/arriba"
-        android:layout_below="@+id/txtarriba"
-        >
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:id="@+id/txtContadorPerros"
+                android:layout_marginRight="5dp"
+                android:gravity="end"
+                android:layout_weight="1" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Gatos"
 
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/imgPerro"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:padding="1dp"
-            android:layout_margin="5dp"
-            android:background="@drawable/perro" />
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:gravity="end"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1" />
 
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/imgCat"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:background="@drawable/gato"/>
+        </LinearLayout>
 
-    </TableRow>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:orientation="horizontal">
 
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="20dp"
-        android:id="@+id/txtabajo"
-        android:layout_below="@+id/arriba">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/imgPerro"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="@drawable/perro3"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"/>
 
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Otros"
-            android:layout_weight="1"
-            android:layout_marginLeft="3dp"
-            />
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Perdidos"
-            android:layout_weight="1"
-            android:layout_marginLeft="3dp"/>
-
-    </TableRow>
-
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="240dp"
-        android:layout_below="@+id/txtabajo"
-        android:id="@+id/abajo">
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/imgOtro"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:background="@drawable/raton"
-            />
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/imgEncontrar"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:background="@drawable/buscando"
-            />
-
-    </TableRow>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/imgCat"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="@drawable/gato"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"/>
 
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.05"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Otros"
+
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:layout_marginRight="5dp"
+                android:gravity="end"
+                android:layout_weight="1" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Perdido" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:gravity="end"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/imgOtro"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="@drawable/raton"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/imgEncontrar"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="@drawable/buscando"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.03"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.18"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/imgAbout"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:background="@drawable/eventos2"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
 </RelativeLayout>
-

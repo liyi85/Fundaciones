@@ -17,7 +17,6 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * Created by andrearodriguez on 9/25/16.
@@ -28,6 +27,8 @@ public class PerroListAdapter extends RecyclerView.Adapter<PerroListAdapter.View
     private List<Paticas> perroList;
     private ImageLoader imageLoader;
     private OnItemClickListener clickListener;
+
+
 
     public PerroListAdapter(List<Paticas> perroList, ImageLoader imageLoader, OnItemClickListener clickListener) {
         this.perroList = perroList;
@@ -71,7 +72,9 @@ public class PerroListAdapter extends RecyclerView.Adapter<PerroListAdapter.View
 
     @Override
     public int getItemCount() {
+
         return perroList.size();
+
     }
 
 

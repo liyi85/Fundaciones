@@ -64,6 +64,20 @@
             android:text="@string/loging.button.gotosignup"
             android:id="@+id/btnSignUp" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutButtons">
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recordarme"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/swichRemember"/>
+
+    </LinearLayout>
     <ProgressBar
 
         style="?android:attr/progressBarStyleLarge"

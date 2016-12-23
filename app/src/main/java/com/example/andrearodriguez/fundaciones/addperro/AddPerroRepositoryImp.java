@@ -1,15 +1,11 @@
 package com.example.andrearodriguez.fundaciones.addperro;
 
-import android.support.design.widget.Snackbar;
-
 import com.example.andrearodriguez.fundaciones.addperro.event.AddPerroEvent;
 import com.example.andrearodriguez.fundaciones.domine.FirebasePerrosAPI;
 import com.example.andrearodriguez.fundaciones.entities.Paticas;
 import com.example.andrearodriguez.fundaciones.libs.base.EvenBus;
 import com.example.andrearodriguez.fundaciones.libs.base.ImageStorage;
 import com.example.andrearodriguez.fundaciones.libs.base.ImageStorageFinishedListener;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.io.File;
 
@@ -58,6 +54,7 @@ public class AddPerroRepositoryImp implements AddPerroRepository{
                 post(AddPerroEvent.UPLOAD_ERROR, error);
             }
         };
+
         imageStorage.upload(new File(path), newPhotoId, listener);
     }
 

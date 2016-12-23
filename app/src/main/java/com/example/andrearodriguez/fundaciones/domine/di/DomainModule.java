@@ -1,6 +1,7 @@
 package com.example.andrearodriguez.fundaciones.domine.di;
 
 import com.example.andrearodriguez.fundaciones.domine.FirebaseFundacionesAPI;
+import com.example.andrearodriguez.fundaciones.domine.FirebaseGatosAPI;
 import com.example.andrearodriguez.fundaciones.domine.FirebaseLoginAPI;
 import com.example.andrearodriguez.fundaciones.domine.FirebasePerrosAPI;
 import com.firebase.client.Firebase;
@@ -36,6 +37,11 @@ public class DomainModule {
     @Singleton
     FirebasePerrosAPI providesFirebasePerrosAPI(Firebase firebase){
         return new FirebasePerrosAPI(firebase);
+    }
+    @Provides
+    @Singleton
+    FirebaseGatosAPI providesFirebaseGatosAPI(Firebase firebase){
+        return new FirebaseGatosAPI(firebase);
     }
     @Provides
     @Singleton

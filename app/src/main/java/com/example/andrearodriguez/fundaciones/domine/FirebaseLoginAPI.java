@@ -1,7 +1,6 @@
 package com.example.andrearodriguez.fundaciones.domine;
 
 import com.firebase.client.AuthData;
-import com.firebase.client.ChildEventListener;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 

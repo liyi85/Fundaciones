@@ -9,12 +9,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.widget.TableRow;
+import android.widget.TextView;
 
 import com.example.andrearodriguez.fundaciones.FundacionesApp;
 import com.example.andrearodriguez.fundaciones.R;
+import com.example.andrearodriguez.fundaciones.gatolist.ui.GatoListActivity;
 import com.example.andrearodriguez.fundaciones.login.ui.LoginActivity;
 import com.example.andrearodriguez.fundaciones.main.MainPresenter;
 import com.example.andrearodriguez.fundaciones.perrolist.ui.PerroListActivity;
@@ -31,30 +31,16 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     @Bind(R.id.appbar)
     AppBarLayout appbar;
-    @Bind(R.id.txtarriba)
-    TableRow txtarriba;
-    @Bind(R.id.imgPerro)
-    Button imgPerro;
-    @Bind(R.id.imgCat)
-    Button imgCat;
-    @Bind(R.id.arriba)
-    TableRow arriba;
-    @Bind(R.id.txtabajo)
-    TableRow txtabajo;
-    @Bind(R.id.imgOtro)
-    Button imgOtro;
-    @Bind(R.id.imgEncontrar)
-    Button imgEncontrar;
-    @Bind(R.id.abajo)
-    TableRow abajo;
     @Bind(R.id.main_content)
     RelativeLayout mainContent;
+    @Bind(R.id.txtContadorPerros)
+    TextView contadorPerros;
+
 
     @Inject
     MainPresenter presenter;
     @Inject
     SharedPreferences sharedPreferences;
-
 
     private FundacionesApp app;
 
@@ -67,12 +53,18 @@ public class MainActivity extends AppCompatActivity {
         app = (FundacionesApp)getApplication();
         setupInjection();
         setupNavigation();
+
+
     }
 
     private void setupNavigation() {
         setSupportActionBar(toolbar);
+
         String email = sharedPreferences.getString(app.getEmailKey(), getString(R.string.app_name));
         getSupportActionBar().setTitle(email);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
     }
 
     private void setupInjection() {
@@ -118,6 +110,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.imgCat:
+                Intent intentG = new Intent(this, GatoListActivity.class);
+                startActivity(intentG);
                 break;
             case R.id.imgOtro:
                 break;

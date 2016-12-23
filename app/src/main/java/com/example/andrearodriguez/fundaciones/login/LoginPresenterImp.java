@@ -69,6 +69,8 @@ public class LoginPresenterImp implements LoginPresenter{
                 break;
         }
     }
+
+
     private void onFailedRecoverSession() {
         if (loginView != null) {
             loginView.hideProgress();

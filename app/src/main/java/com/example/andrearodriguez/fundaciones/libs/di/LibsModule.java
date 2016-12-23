@@ -1,7 +1,7 @@
 package com.example.andrearodriguez.fundaciones.libs.di;
 
-import android.app.Activity;
 import android.content.Context;
+import android.support.v4.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
@@ -9,12 +9,10 @@ import com.cloudinary.Cloudinary;
 import com.cloudinary.android.Utils;
 import com.example.andrearodriguez.fundaciones.libs.ClaudinaryImageStorage;
 import com.example.andrearodriguez.fundaciones.libs.GlideImageLoader;
-
 import com.example.andrearodriguez.fundaciones.libs.GreenRobotEventBus;
 import com.example.andrearodriguez.fundaciones.libs.base.EvenBus;
 import com.example.andrearodriguez.fundaciones.libs.base.ImageLoader;
 import com.example.andrearodriguez.fundaciones.libs.base.ImageStorage;
-
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -28,10 +26,10 @@ import dagger.Provides;
  */
 @Module
 public class LibsModule {
-    private Activity activity;
+    private Fragment fragment;
 
-    public LibsModule(Activity activity) {
-        this.activity = activity;
+    public LibsModule(Fragment fragment) {
+        this.fragment = fragment;
     }
     @Provides
     @Singleton
@@ -54,14 +52,14 @@ public class LibsModule {
 
     @Provides
     @Singleton
-    RequestManager providesRequestManager(Activity activity){
-        return Glide.with(activity);
+    RequestManager providesRequestManager(Fragment fragment){
+        return Glide.with(fragment);
     }
 
     @Provides
     @Singleton
-    Activity providesActivity(){
-        return  this.activity;
+    Fragment providesFragment(){
+        return  this.fragment;
     }
     @Provides
     @Singleton

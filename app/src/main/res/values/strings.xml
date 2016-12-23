@@ -40,6 +40,7 @@
     <string name="verbebes.menu.action.about">Sobre</string>
 
     <string name="addcontact.messagge.title">Agregar Perro</string>
+    <string name="addcontact.messagge.title2">Agregar Gato</string>
     <string name="addcontact.messagge.add">Aceptar</string>
     <string name="addcontact.messagge.cancel">Cancel</string>
     <string name="photolist_message_share">compartido</string>
@@ -73,5 +74,8 @@
         <item>Años</item>
         <item>Meses</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

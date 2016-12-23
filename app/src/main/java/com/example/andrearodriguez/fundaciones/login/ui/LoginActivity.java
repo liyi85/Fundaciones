@@ -1,5 +1,6 @@
 package com.example.andrearodriguez.fundaciones.login.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 
 import com.example.andrearodriguez.fundaciones.FundacionesApp;
 import com.example.andrearodriguez.fundaciones.R;
@@ -42,6 +44,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     ProgressBar progressBar;
     @Bind(R.id.layoutMainContainer)
     RelativeLayout layoutMainContainer;
+    @Bind(R.id.swichRemember)
+    Switch swichRemember;
+
 
     private FundacionesApp app;
 
@@ -50,11 +55,15 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Inject
     SharedPreferences sharedPreferences;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+
+        sharedPreferences = getSharedPreferences("email", Context.MODE_PRIVATE);
 
         app = (FundacionesApp) getApplication();
         setupInjection();
@@ -79,6 +88,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         loginPresenter.onDestroy();
         super.onDestroy();
     }
+
+
 
     private void setupInjection() {
         app.getLoginComponent(this).inject(this);
@@ -107,7 +118,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @OnClick(R.id.btnSignUp)
     @Override
     public void handleSignUp() {
-
         startActivity(new Intent(this, SignupActivity.class));
     }
 
@@ -116,6 +126,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     public void handleSignIn() {
         loginPresenter.validateLogin(txtEmail.getText().toString(),
                 txtPassword.getText().toString());
+                onSharedPReferences(txtEmail.toString(), txtPassword.toString());
+
 
     }
 
@@ -132,9 +144,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         txtPassword.setText("");
         String msgError = String.format(getString(R.string.loging_error_messagge_signin, error));
         txtPassword.setError(msgError);
+
     }
 
-    private void setInputs (boolean enabled){
+    private void setInputs(boolean enabled) {
         txtEmail.setEnabled(enabled);
         txtPassword.setEnabled(enabled);
         btnSignIn.setEnabled(enabled);
@@ -143,8 +156,19 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void setUserEmail(String email) {
-        if(email != null){
+        if (email != null) {
             sharedPreferences.edit().putString(app.getEmailKey(), email).commit();
+
         }
     }
+
+    public void onSharedPReferences(String email, String password){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("email", email);
+        editor.putString("password", password);
+        editor.commit();
+        editor.apply();
+    }
+
+
 }

@@ -19,9 +19,8 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -87,6 +86,7 @@ public class AddPerroFragment extends DialogFragment implements DialogInterface.
     FrameLayout containerAddP;
     @Bind(R.id.spinnerEdad)
     Spinner spinnerEdad;
+
     private String photoPath;
     private FundacionesApp app;
 
@@ -117,6 +117,7 @@ public class AddPerroFragment extends DialogFragment implements DialogInterface.
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+
                     }
                 })
 
@@ -234,7 +235,6 @@ public class AddPerroFragment extends DialogFragment implements DialogInterface.
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         addPerroPresenter.onCreate();
-
         super.onActivityCreated(savedInstanceState);
     }
 
@@ -267,17 +267,20 @@ public class AddPerroFragment extends DialogFragment implements DialogInterface.
                 @Override
                 public void onClick(View v) {
 
-                    String nombre = txtNombre.getText().toString().trim();
-                    String edad = txtEdad.getText().toString().trim() + " " + spinnerEdad.getSelectedItem().toString().trim();
-                    String sexo = spinnerSexo.getSelectedItem().toString().trim();
-                    String tamano = spinnerTamano.getSelectedItem().toString().trim();
-                    String esteril = spinnerEsteril.getSelectedItem().toString().trim();
-                    String vacuna = spinnerVacuna.getSelectedItem().toString().trim();
+                    String nombre = txtNombre.getText().toString();
+                    String edad = txtEdad.getText().toString() + " " + spinnerEdad.getSelectedItem().toString().trim();
+                    String sexo = spinnerSexo.getSelectedItem().toString();
+                    String tamano = spinnerTamano.getSelectedItem().toString();
+                    String esteril = spinnerEsteril.getSelectedItem().toString();
+                    String vacuna = spinnerVacuna.getSelectedItem().toString();
+                    String path = photoPath;
 
-                    if (nombre != null || edad != null || sexo != null || tamano != null || esteril != null || vacuna != null) {
-                        addPerroPresenter.uploadPhoto(nombre, edad, sexo, tamano, photoPath, esteril, vacuna);
-                    } else {
+                    if (nombre == "" || edad == " Años" || sexo == "Hembra" || path == null) {
                         Snackbar.make(containerAddP, "Todos los datos son necesarios", Snackbar.LENGTH_LONG).show();
+                    } else if (nombre != "" && edad != " Años" && sexo != "Hembra" && tamano != null && esteril != null && vacuna != null && path != null){
+                        addPerroPresenter.uploadPhoto(nombre, edad, sexo, tamano, photoPath, esteril, vacuna);
+                        Log.i("que sale", ""+nombre+" "+edad+" "+sexo+" "+tamano+" "+photoPath+" "+esteril+" "+vacuna);
+
                     }
 
 
@@ -455,7 +458,7 @@ public class AddPerroFragment extends DialogFragment implements DialogInterface.
 
     @Override
     public void onUploadInit() {
-        showSnackbar(R.string.main_notice_upload_init);
+            showSnackbar(R.string.main_notice_upload_init);
     }
 
     @Override

@@ -346,7 +346,19 @@ public class SignupActivity extends AppCompatActivity implements SignupView, Add
 
     @Override
     public void setUserEmail(String email) {
+        if (email != null) {
+            sharedPreferences.edit().putString(app.getEmailKey(), email).commit();
+            onSharedPReferences(txtEmail.toString(), txtPassword.toString());
 
+        }
+    }
+
+    public void onSharedPReferences(String email, String password){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("email", email);
+        editor.putString("password", password);
+        editor.commit();
+        editor.apply();
     }
 
     private void setInputs(boolean enabled) {
@@ -377,6 +389,7 @@ public class SignupActivity extends AppCompatActivity implements SignupView, Add
     private void showSnackbar(String msg) {
         Snackbar.make(layoutMainContainer2, msg, Snackbar.LENGTH_SHORT).show();
     }
+
 
     private void showSnackbar(int strResult) {
         Snackbar.make(layoutMainContainer2, strResult, Snackbar.LENGTH_SHORT).show();

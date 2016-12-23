@@ -1,0 +1,131 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/containerAddP">
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:layout_width="140dp"
+            android:layout_height="150dp"
+            android:id="@+id/imgCat"
+            android:src="@android:drawable/ic_menu_camera"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"/>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/wrapernamegato"
+            android:layout_toEndOf="@+id/imgCat"
+            android:layout_toRightOf="@+id/imgCat">
+            <EditText
+                android:layout_marginTop="10dp"
+                android:id="@+id/txtNombre"
+                android:layout_width="@dimen/largo_row_perro"
+                android:layout_height="wrap_content"
+                android:hint="Nombre"
+                android:textColor="@android:color/black"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/wraperedad"
+            android:layout_below="@+id/wrapernamegato"
+            android:layout_toEndOf="@+id/imgCat"
+            android:layout_toRightOf="@+id/imgCat"
+            android:paddingBottom="10dp">
+            <EditText
+                android:id="@+id/txtEdad"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="Edad"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerEdad"
+            android:layout_toRightOf="@+id/wraperedad"
+            android:layout_below="@+id/wrapernamegato"
+            android:paddingTop="15dp"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sexo"
+            android:id="@+id/txtSexo"
+            android:layout_below="@+id/wraperedad"
+            android:layout_toRightOf="@+id/imgCat"
+            android:paddingBottom="25dp"/>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerSexo"
+            android:layout_toRightOf="@+id/txtSexo"
+            android:layout_below="@+id/wraperedad"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tamaño"
+            android:id="@+id/txtTamano"
+            android:layout_below="@+id/txtSexo"
+            android:layout_toRightOf="@+id/imgCat"
+            android:paddingBottom="25dp"/>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerTamano"
+            android:layout_toRightOf="@+id/txtTamano"
+            android:layout_below="@+id/txtSexo"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Esterilizado"
+            android:id="@+id/txtEsteril"
+            android:layout_below="@+id/txtTamano"
+            android:layout_toRightOf="@+id/imgCat"
+            android:paddingBottom="25dp"/>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerEsteril"
+            android:layout_toRightOf="@+id/txtEsteril"
+            android:layout_below="@+id/txtTamano"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vacunado"
+            android:id="@+id/txtVacunado"
+            android:layout_below="@+id/txtEsteril"
+            android:layout_toRightOf="@+id/imgCat" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerVacuna"
+            android:layout_toRightOf="@+id/txtEsteril"
+            android:layout_below="@+id/txtEsteril"/>
+    </RelativeLayout>
+
+</FrameLayout>

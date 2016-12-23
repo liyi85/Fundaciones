@@ -7,6 +7,7 @@ import com.example.andrearodriguez.fundaciones.entities.Paticas;
  * Created by andrearodriguez on 8/18/16.
  */
 public class PerroListInteractorImp implements PerroListInteractor{
+
     private PerroListRepository repository;
 
     public PerroListInteractorImp(PerroListRepository repository) {
