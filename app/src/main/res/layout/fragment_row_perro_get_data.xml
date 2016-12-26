@@ -4,9 +4,9 @@
     android:layout_height="match_parent"
     android:id="@+id/containerAddP">
 
-    <RelativeLayout
+    <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -15,37 +15,54 @@
             android:layout_height="150dp"
             android:id="@+id/imgDog"
             android:src="@android:drawable/ic_menu_camera"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="10dp"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.9"
+            android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/wrapernameperro"
-            android:layout_toEndOf="@+id/imgDog"
-            android:layout_toRightOf="@+id/imgDog">
+            android:id="@+id/wrapernameperro">
             <EditText
                 android:layout_marginTop="10dp"
                 android:id="@+id/txtNombre"
-                android:layout_width="@dimen/largo_row_perro"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:hint="Nombre"
                 android:textColor="@android:color/black"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="match_parent" />
         </android.support.design.widget.TextInputLayout>
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.9"
+            android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/wraperedad"
-            android:layout_below="@+id/wrapernameperro"
-            android:layout_toEndOf="@+id/imgDog"
-            android:layout_toRightOf="@+id/imgDog"
             android:paddingBottom="10dp">
             <EditText
+                android:layout_marginTop="10dp"
                 android:id="@+id/txtEdad"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
@@ -58,74 +75,96 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/spinnerEdad"
-            android:layout_toRightOf="@+id/wraperedad"
-            android:layout_below="@+id/wrapernameperro"
             android:paddingTop="15dp"/>
 
+        </LinearLayout>
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sexo"
             android:id="@+id/txtSexo"
-            android:layout_below="@+id/wraperedad"
-            android:layout_toRightOf="@+id/imgDog"
             android:paddingBottom="25dp"/>
 
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/spinnerSexo"
-            android:layout_toRightOf="@+id/txtSexo"
-            android:layout_below="@+id/wraperedad"/>
+            android:id="@+id/spinnerSexo" />
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tamaño"
             android:id="@+id/txtTamano"
-            android:layout_below="@+id/txtSexo"
-            android:layout_toRightOf="@+id/imgDog"
             android:paddingBottom="25dp"/>
 
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/spinnerTamano"
-            android:layout_toRightOf="@+id/txtTamano"
-            android:layout_below="@+id/txtSexo"/>
+            android:layout_toRightOf="@+id/txtTamano" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Esterilizado"
             android:id="@+id/txtEsteril"
-            android:layout_below="@+id/txtTamano"
-            android:layout_toRightOf="@+id/imgDog"
             android:paddingBottom="25dp"/>
 
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/spinnerEsteril"
-            android:layout_toRightOf="@+id/txtEsteril"
-            android:layout_below="@+id/txtTamano"/>
+            />
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Vacunado"
             android:id="@+id/txtVacunado"
-            android:layout_below="@+id/txtEsteril"
-            android:layout_toRightOf="@+id/imgDog" />
+            android:paddingBottom="25dp"/>
 
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/spinnerVacuna"
-            android:layout_toRightOf="@+id/txtEsteril"
-            android:layout_below="@+id/txtEsteril"/>
-    </RelativeLayout>
+            android:id="@+id/spinnerVacuna" />
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Discapacidad"
+                    android:id="@+id/txtDiscapacidad" />
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinnerDiscapacidad" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 
 </FrameLayout>

@@ -13,7 +13,7 @@ public class AddGatoInteractorImp implements AddGatoInteractor{
     }
 
     @Override
-    public void excecute(String name, String edad, String sexo, String tamano, String path, String esteril, String vacuna) {
-        repository.uploadPhoto(name, edad, sexo, tamano, path, esteril, vacuna);
+    public void excecute(String name, String edad, String sexo, String tamano, String path, String esteril, String vacuna, String discapacidad) {
+        repository.uploadPhoto(name, edad, sexo, tamano, path, esteril, vacuna, discapacidad);
     }
 }

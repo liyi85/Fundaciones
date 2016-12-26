@@ -33,9 +33,10 @@ public class AddGatoPresenterImp implements AddGatoPresenter{
         evenBus.unregister(this);
     }
 
+
     @Override
-    public void uploadPhoto(String name, String edad, String sexo, String tamano, String path, String esteril, String vacuna) {
-        interactor.excecute(name, edad, sexo, tamano, path, esteril, vacuna);
+    public void uploadPhoto(String name, String edad, String sexo, String tamano, String path, String esteril, String vacuna, String discapacidad) {
+        interactor.excecute(name, edad, sexo, tamano, path, esteril, vacuna, discapacidad);
     }
 
     @Override

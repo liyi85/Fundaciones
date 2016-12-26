@@ -48,6 +48,8 @@ public class FundacionesApp extends Application {
     //private final static String FIREBASE_URL = "https://fundaciones.firebaseIO.com";
     private final static String FIREBASE_URL = "https://fundacionesapp.firebaseIO.com";
 
+
+
     private DomainModule domainModule;
     private FundacionAppModule fundacionAppModule;
 
@@ -66,6 +68,8 @@ public class FundacionesApp extends Application {
     private void initFirebase() {
         Firebase.setAndroidContext(this);
     }
+
+
 
     public String getEmailKey() {
         return EMAIL_KEY;
@@ -143,5 +147,6 @@ public class FundacionesApp extends Application {
                 .addGatoModule(new AddGatoModule(view))
                 .build();
     }
+
 
 }

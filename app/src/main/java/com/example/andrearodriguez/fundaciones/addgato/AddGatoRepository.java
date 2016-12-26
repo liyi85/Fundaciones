@@ -5,5 +5,5 @@ package com.example.andrearodriguez.fundaciones.addgato;
  */
 
 public interface AddGatoRepository {
-    void uploadPhoto(String name, String edad, String sexo, String tamano, String path, String esteril, String vacuna);
+    void uploadPhoto(String name, String edad, String sexo, String tamano, String path, String esteril, String vacuna, String discapacidad);
 }

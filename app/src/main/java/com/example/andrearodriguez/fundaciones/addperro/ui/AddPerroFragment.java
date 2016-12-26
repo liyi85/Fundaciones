@@ -86,6 +86,10 @@ public class AddPerroFragment extends DialogFragment implements DialogInterface.
     FrameLayout containerAddP;
     @Bind(R.id.spinnerEdad)
     Spinner spinnerEdad;
+    @Bind(R.id.txtDiscapacidad)
+    TextView txtDiscapacidad;
+    @Bind(R.id.spinnerDiscapacidad)
+    Spinner spinnerDiscapacidad;
 
     private String photoPath;
     private FundacionesApp app;
@@ -95,11 +99,11 @@ public class AddPerroFragment extends DialogFragment implements DialogInterface.
     ArrayAdapter<CharSequence> adapterVacunado;
     ArrayAdapter<CharSequence> adapterSexo;
     ArrayAdapter<CharSequence> adapterEdad;
+    ArrayAdapter<CharSequence> adapterDiscapacidad;
 
 
     @Inject
     AddPerroPresenter addPerroPresenter;
-
 
     private static final int REQUEST_PICTURE = 1;
 
@@ -139,6 +143,7 @@ public class AddPerroFragment extends DialogFragment implements DialogInterface.
         adapterGenero();
         adapterVacunacion();
         adapterAños();
+        adapterDiscapacitado();
         builder.setView(view);
         AlertDialog dialog = builder.create();
         dialog.setOnShowListener(this);
@@ -232,6 +237,22 @@ public class AddPerroFragment extends DialogFragment implements DialogInterface.
         });
     }
 
+    private void adapterDiscapacitado() {
+
+        adapterDiscapacidad = ArrayAdapter.createFromResource(getContext(), R.array.SelectDiscapa, android.R.layout.simple_spinner_item);
+        adapterDiscapacidad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerDiscapacidad.setAdapter(adapterDiscapacidad);
+        spinnerDiscapacidad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+    }
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         addPerroPresenter.onCreate();
@@ -239,7 +260,6 @@ public class AddPerroFragment extends DialogFragment implements DialogInterface.
     }
 
     private void setupinjection() {
-
         app.getAddPerroComponent(this).inject(this);
     }
 
@@ -273,13 +293,14 @@ public class AddPerroFragment extends DialogFragment implements DialogInterface.
                     String tamano = spinnerTamano.getSelectedItem().toString();
                     String esteril = spinnerEsteril.getSelectedItem().toString();
                     String vacuna = spinnerVacuna.getSelectedItem().toString();
+                    String discapacidad = spinnerDiscapacidad.getSelectedItem().toString();
                     String path = photoPath;
 
                     if (nombre == "" || edad == " Años" || sexo == "Hembra" || path == null) {
                         Snackbar.make(containerAddP, "Todos los datos son necesarios", Snackbar.LENGTH_LONG).show();
-                    } else if (nombre != "" && edad != " Años" && sexo != "Hembra" && tamano != null && esteril != null && vacuna != null && path != null){
-                        addPerroPresenter.uploadPhoto(nombre, edad, sexo, tamano, photoPath, esteril, vacuna);
-                        Log.i("que sale", ""+nombre+" "+edad+" "+sexo+" "+tamano+" "+photoPath+" "+esteril+" "+vacuna);
+                    } else if (nombre != "" && edad != " Años" && sexo != "Hembra" && tamano != null && esteril != null && vacuna != null && path != null) {
+                        addPerroPresenter.uploadPhoto(nombre, edad, sexo, tamano, photoPath, esteril, vacuna, discapacidad);
+                        Log.i("que sale", "" + nombre + " " + edad + " " + sexo + " " + tamano + " " + photoPath + " " + esteril + " " + vacuna);
 
                     }
 
@@ -340,6 +361,7 @@ public class AddPerroFragment extends DialogFragment implements DialogInterface.
 
     @OnClick(R.id.imgDog)
     public void takePicture() {
+
         Intent chooserIntent = null;
 
         List<Intent> intentList = new ArrayList<>();
@@ -458,7 +480,7 @@ public class AddPerroFragment extends DialogFragment implements DialogInterface.
 
     @Override
     public void onUploadInit() {
-            showSnackbar(R.string.main_notice_upload_init);
+        showSnackbar(R.string.main_notice_upload_init);
     }
 
     @Override

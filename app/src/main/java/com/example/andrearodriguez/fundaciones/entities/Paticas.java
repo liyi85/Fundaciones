@@ -22,6 +22,15 @@ public class Paticas {
     private String fundacion;
     private String vacunacion;
     private String esterilizacion;
+    private String discapacitado;
+
+    public String getDiscapacitado() {
+        return discapacitado;
+    }
+
+    public void setDiscapacitado(String discapacitado) {
+        this.discapacitado = discapacitado;
+    }
 
     public String getId() {
         return id;

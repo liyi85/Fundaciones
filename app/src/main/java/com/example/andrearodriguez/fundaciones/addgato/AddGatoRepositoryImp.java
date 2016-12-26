@@ -1,7 +1,6 @@
 package com.example.andrearodriguez.fundaciones.addgato;
 
 import com.example.andrearodriguez.fundaciones.addgato.event.AddGatoEvent;
-import com.example.andrearodriguez.fundaciones.addperro.event.AddPerroEvent;
 import com.example.andrearodriguez.fundaciones.domine.FirebaseGatosAPI;
 import com.example.andrearodriguez.fundaciones.entities.Paticas;
 import com.example.andrearodriguez.fundaciones.libs.base.EvenBus;
@@ -27,7 +26,7 @@ public class AddGatoRepositoryImp implements AddGatoRepository{
     }
 
     @Override
-    public void uploadPhoto(final String name, final String edad, final String sexo, final String tamano, String path, final String esteril, final String vacuna) {
+    public void uploadPhoto(final String name, final String edad, final String sexo, final String tamano, String path, final String esteril, final String vacuna, final String discapacidad) {
         final String newPhotoId = firebaseGatosAPI.create();
         final Paticas paticas = new Paticas();
         paticas.setId(newPhotoId);
@@ -48,13 +47,14 @@ public class AddGatoRepositoryImp implements AddGatoRepository{
                 paticas.setTamaño(tamano);
                 paticas.setEsterilizacion(esteril);
                 paticas.setVacunacion(vacuna);
+                paticas.setDiscapacitado(discapacidad);
                 firebaseGatosAPI.update(paticas);
-                post(AddPerroEvent.UPLOAD_COMPLETE);
+                post(AddGatoEvent.UPLOAD_COMPLETE);
             }
 
             @Override
             public void onError(String error) {
-                post(AddPerroEvent.UPLOAD_ERROR, error);
+                post(AddGatoEvent.UPLOAD_ERROR, error);
             }
         };
 
@@ -65,7 +65,7 @@ public class AddGatoRepositoryImp implements AddGatoRepository{
         post(type, null);
     }
     private  void post(int type, String error){
-        AddPerroEvent event = new AddPerroEvent();
+        AddGatoEvent event = new AddGatoEvent();
         event.setType(type);
         event.setError(error);
         evenBus.post(event);

@@ -15,6 +15,7 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
@@ -51,7 +52,7 @@ import butterknife.OnClick;
  * Created by andrearodriguez on 12/22/16.
  */
 
-public class AddGatoFragment extends android.support.v4.app.DialogFragment implements DialogInterface.OnShowListener, AddGatoView {
+public class AddGatoFragment extends DialogFragment implements DialogInterface.OnShowListener, AddGatoView {
 
 
     @Bind(R.id.imgCat)
@@ -84,6 +85,10 @@ public class AddGatoFragment extends android.support.v4.app.DialogFragment imple
     Spinner spinnerVacuna;
     @Bind(R.id.containerAddP)
     FrameLayout containerAddP;
+    @Bind(R.id.txtDiscapacidad)
+    TextView txtDiscapacidad;
+    @Bind(R.id.spinnerDiscapacidad)
+    Spinner spinnerDiscapacidad;
 
     private String photoPath;
     private FundacionesApp app;
@@ -94,6 +99,8 @@ public class AddGatoFragment extends android.support.v4.app.DialogFragment imple
     ArrayAdapter<CharSequence> adapterVacunado;
     ArrayAdapter<CharSequence> adapterSexo;
     ArrayAdapter<CharSequence> adapterEdad;
+    ArrayAdapter<CharSequence> adapterDiscapacidad;
+
 
     @Inject
     AddGatoPresenter addGatoPresenter;
@@ -133,6 +140,7 @@ public class AddGatoFragment extends android.support.v4.app.DialogFragment imple
         adapterGenero();
         adapterVacunacion();
         adapterAños();
+        adapterDiscapacitado();
         builder.setView(view);
         AlertDialog dialog = builder.create();
         dialog.setOnShowListener(this);
@@ -228,6 +236,22 @@ public class AddGatoFragment extends android.support.v4.app.DialogFragment imple
         });
     }
 
+    private void adapterDiscapacitado() {
+
+        adapterDiscapacidad = ArrayAdapter.createFromResource(getContext(), R.array.SelectDiscapa, android.R.layout.simple_spinner_item);
+        adapterDiscapacidad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerDiscapacidad.setAdapter(adapterDiscapacidad);
+        spinnerDiscapacidad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+    }
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         addGatoPresenter.onCreate();
@@ -252,6 +276,8 @@ public class AddGatoFragment extends android.support.v4.app.DialogFragment imple
         ButterKnife.unbind(this);
     }
 
+
+
     @Override
     public void onShow(DialogInterface dialogInterface) {
         final AlertDialog dialog = (AlertDialog) getDialog();
@@ -269,13 +295,14 @@ public class AddGatoFragment extends android.support.v4.app.DialogFragment imple
                     String tamano = spinnerTamano.getSelectedItem().toString();
                     String esteril = spinnerEsteril.getSelectedItem().toString();
                     String vacuna = spinnerVacuna.getSelectedItem().toString();
+                    String discapacidad = spinnerDiscapacidad.getSelectedItem().toString();
                     String path = photoPath;
 
                     if (nombre == "" || edad == " Años" || sexo == "Hembra" || path == null) {
                         Snackbar.make(containerAddP, "Todos los datos son necesarios", Snackbar.LENGTH_LONG).show();
-                    } else if (nombre != "" && edad != " Años" && sexo != "Hembra" && tamano != null && esteril != null && vacuna != null && path != null){
-                        addGatoPresenter.uploadPhoto(nombre, edad, sexo, tamano, photoPath, esteril, vacuna);
-                        Log.i("que sale", ""+nombre+" "+edad+" "+sexo+" "+tamano+" "+photoPath+" "+esteril+" "+vacuna);
+                    } else if (nombre != "" && edad != " Años" && sexo != "Hembra" && tamano != null && esteril != null && vacuna != null && path != null) {
+                        addGatoPresenter.uploadPhoto(nombre, edad, sexo, tamano, photoPath, esteril, vacuna, discapacidad);
+                        Log.i("que sale", "" + nombre + " " + edad + " " + sexo + " " + tamano + " " + photoPath + " " + esteril + " " + vacuna);
 
                     }
 
@@ -463,7 +490,6 @@ public class AddGatoFragment extends android.support.v4.app.DialogFragment imple
     public void onUploadError(String error) {
         showSnackbar(error);
     }
-
 
 
 }

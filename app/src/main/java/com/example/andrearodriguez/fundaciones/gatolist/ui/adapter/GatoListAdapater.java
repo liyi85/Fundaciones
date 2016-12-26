@@ -44,6 +44,7 @@ public class GatoListAdapater extends RecyclerView.Adapter<GatoListAdapater.View
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Paticas currenGato = gatoList.get(position);
+
         imageLoader.load(holder.imgCat, currenGato.getUrl());
 
         holder.txtNombre.setText(currenGato.getNombre());

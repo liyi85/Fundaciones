@@ -48,12 +48,21 @@
 
     <string name="main_message_picture_source">Selecciona una foto</string>
 
+    <string name="cargando.fotos">Espere que carguen las fotos para poder compartir</string>
+
     <string-array name="SelectEsteril">
         <item>Si</item>
         <item>No</item>
     </string-array>
 
     <string-array name="SelectTamano">
+        <item>Pequeño hasta 10kg</item>
+        <item>Mediano entre 11-20kg</item>
+        <item>Grande entre 21-29kg</item>
+        <item>MuyGrande más de 30kg</item>
+    </string-array>
+
+    <string-array name="SelectTamanoGatos">
         <item>Pequeño hasta 10kg</item>
         <item>Mediano entre 11-20kg</item>
         <item>Grande entre 21-29kg</item>
@@ -74,6 +83,12 @@
         <item>Años</item>
         <item>Meses</item>
     </string-array>
+
+    <string-array name="SelectDiscapa">
+        <item>Si</item>
+        <item>No</item>
+    </string-array>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

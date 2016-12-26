@@ -1,8 +1,11 @@
 package com.example.andrearodriguez.fundaciones.perrolist.ui;
 
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -10,7 +13,9 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -20,6 +25,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
 import com.example.andrearodriguez.fundaciones.FundacionesApp;
@@ -62,6 +68,10 @@ public class PerroListFragment extends Fragment implements PerroListView, OnItem
 
     @Inject
     PerroListPresenter presenter;
+
+
+    private static final int MY_PERMISSIONS_REQUEST_CAMERA = 1 ;
+
 
     public PerroListFragment() {
         // Required empty public constructor
@@ -153,17 +163,25 @@ public class PerroListFragment extends Fragment implements PerroListView, OnItem
     }
     @Override
     public void onShareclick(Paticas paticas, ImageView img) {
-        Bitmap bitmap = ((GlideBitmapDrawable) img.getDrawable()).getBitmap();
-        Intent share = new Intent(Intent.ACTION_SEND);
-        share.setType("image/jpeg");
+        try{
+            Drawable dr = ((ImageView) img).getDrawable();
+            Bitmap bitmap =  ((GlideBitmapDrawable)dr.getCurrent()).getBitmap();
+            //Bitmap bitmap = ((GlideBitmapDrawable)img.getDrawable()).getBitmap();
+            Intent share = new Intent(Intent.ACTION_SEND);
+            share.setType("image/jpeg");
 
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
-        String path = MediaStore.Images.Media.insertImage(getActivity().getContentResolver(), bitmap, null, null);
-        Uri imageUri = Uri.parse(path);
+            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+            String path = MediaStore.Images.Media.insertImage(getActivity().getContentResolver(), bitmap, null, null);
+            Uri imageUri =  Uri.parse(path);
 
-        share.putExtra(Intent.EXTRA_STREAM, imageUri);
-        startActivity(Intent.createChooser(share, getString(R.string.photolist_message_share)));
+            share.putExtra(Intent.EXTRA_STREAM, imageUri);
+            startActivity(Intent.createChooser(share, getString(R.string.photolist_message_share)));
+        }catch (Exception e){
+            Toast.makeText(getActivity(), R.string.cargando_fotos, Toast.LENGTH_SHORT).show();
+
+        }
+
     }
 
     @Override
@@ -173,6 +191,41 @@ public class PerroListFragment extends Fragment implements PerroListView, OnItem
 
     @OnClick(R.id.fab)
     public void addPerro() {
+        checkCameraPermission();
         new AddPerroFragment().show(getActivity().getSupportFragmentManager(), getString(R.string.addcontact_messagge_title));
     }
+
+    private void checkCameraPermission() {
+        if (ContextCompat.checkSelfPermission(getActivity(),
+                Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+                    Manifest.permission.CAMERA)) {
+
+            } else {
+
+                ActivityCompat.requestPermissions(getActivity(),
+                        new String[]{Manifest.permission.CAMERA},
+                        MY_PERMISSIONS_REQUEST_CAMERA);
+
+            }
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode,String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_CAMERA: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                } else {
+
+                }
+                return;
+            }
+        }
+    }
+
 }

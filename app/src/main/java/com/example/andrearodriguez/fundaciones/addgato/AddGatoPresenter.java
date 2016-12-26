@@ -11,7 +11,7 @@ public interface AddGatoPresenter {
     void onCreate();
     void onDestroy();
 
-    void uploadPhoto(String name, String edad, String sexo, String tamano, String path, String esteril, String vacuna);
+    void uploadPhoto(String name, String edad, String sexo, String tamano, String path, String esteril, String vacuna, String discapacidad);
 
     void onEventMainThread(AddGatoEvent event);
 }

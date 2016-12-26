@@ -24,7 +24,7 @@ public class AddPerroRepositoryImp implements AddPerroRepository{
     }
 
     @Override
-    public void uploadPhoto(final String nombre, final String edad, final String sexo, final String tamano, String path, final String esteril, final String vacuna) {
+    public void uploadPhoto(final String nombre, final String edad, final String sexo, final String tamano, String path, final String esteril, final String vacuna, final String discapacidad) {
         final String newPhotoId = firebasePerrosAPI.create();
         final Paticas paticas = new Paticas();
         paticas.setId(newPhotoId);
@@ -45,6 +45,7 @@ public class AddPerroRepositoryImp implements AddPerroRepository{
                 paticas.setTamaño(tamano);
                 paticas.setEsterilizacion(esteril);
                 paticas.setVacunacion(vacuna);
+                paticas.setDiscapacitado(discapacidad);
                 firebasePerrosAPI.update(paticas);
                 post(AddPerroEvent.UPLOAD_COMPLETE);
             }

@@ -4,8 +4,6 @@ import com.example.andrearodriguez.fundaciones.addperro.event.AddPerroEvent;
 import com.example.andrearodriguez.fundaciones.addperro.ui.AddPerroView;
 import com.example.andrearodriguez.fundaciones.libs.base.EvenBus;
 
-
-import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 
@@ -37,8 +35,8 @@ public class AddPerroPresenterImp implements AddPerroPresenter{
     }
 
     @Override
-    public void uploadPhoto(String name, String edad, String sexo, String tamano, String path, String esteril, String vacuna) {
-        interactor.excecute(name, edad, sexo, tamano, path, esteril, vacuna);
+    public void uploadPhoto(String name, String edad, String sexo, String tamano, String path, String esteril, String vacuna, String discapacidad) {
+        interactor.excecute(name, edad, sexo, tamano, path, esteril, vacuna, discapacidad);
     }
 
     @Override
