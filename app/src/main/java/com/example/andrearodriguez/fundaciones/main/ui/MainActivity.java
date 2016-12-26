@@ -14,7 +14,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.example.andrearodriguez.fundaciones.FundacionesApp;
 import com.example.andrearodriguez.fundaciones.R;
@@ -37,8 +36,6 @@ public class MainActivity extends AppCompatActivity {
     AppBarLayout appbar;
     @Bind(R.id.main_content)
     RelativeLayout mainContent;
-    @Bind(R.id.txtContadorPerros)
-    TextView contadorPerros;
 
 
     @Inject

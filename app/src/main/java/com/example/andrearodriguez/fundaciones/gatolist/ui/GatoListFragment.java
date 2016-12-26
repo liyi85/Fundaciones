@@ -116,7 +116,7 @@ public class GatoListFragment extends Fragment implements GatoLisView, OnItemCli
 
 
     private void setupToolbar() {
-        toolbar.setTitle("gatos");
+        toolbar.setTitle(R.string.main_title_gatos);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);

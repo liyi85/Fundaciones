@@ -203,7 +203,7 @@ public class AddGatoFragment extends DialogFragment implements DialogInterface.O
     }
 
     private void adapterEstatura() {
-        adapterTamano = ArrayAdapter.createFromResource(getContext(), R.array.SelectTamano, android.R.layout.simple_spinner_item);
+        adapterTamano = ArrayAdapter.createFromResource(getContext(), R.array.SelectTamanoGatos, android.R.layout.simple_spinner_item);
         adapterTamano.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTamano.setAdapter(adapterTamano);
         spinnerTamano.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

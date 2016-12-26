@@ -63,10 +63,9 @@
     </string-array>
 
     <string-array name="SelectTamanoGatos">
-        <item>Pequeño hasta 10kg</item>
-        <item>Mediano entre 11-20kg</item>
-        <item>Grande entre 21-29kg</item>
-        <item>MuyGrande más de 30kg</item>
+        <item>Pequeño hasta 3kg</item>
+        <item>Mediano entre 3-5kg</item>
+        <item>Grande entre 5-7kg</item>
     </string-array>
 
     <string-array name="SelectSexo">

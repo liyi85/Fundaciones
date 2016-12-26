@@ -115,7 +115,7 @@ public class PerroListFragment extends Fragment implements PerroListView, OnItem
     }
 
     private void setupToolbar() {
-        toolbar.setTitle("perros");
+        toolbar.setTitle(R.string.main_titles_perros);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
