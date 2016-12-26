@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.example.andrearodriguez.fundaciones.FundacionesApp;
 import com.example.andrearodriguez.fundaciones.R;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FundacionesApp app;
 
-    private static final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1 ;
+    private static final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1;
 
 
     @Override
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        app = (FundacionesApp)getApplication();
+        app = (FundacionesApp) getApplication();
         setupInjection();
         setupNavigation();
 
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode,String permissions[], int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE: {
                 // If request is cancelled, the result arrays are empty.
@@ -109,9 +110,6 @@ public class MainActivity extends AppCompatActivity {
     private void setupInjection() {
         app.getMainComponent().inject(this);
     }
-
-
-
 
 
     @Override
@@ -145,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @OnClick({R.id.imgPerro, R.id.imgCat, R.id.imgOtro, R.id.imgEncontrar})
+    @OnClick({R.id.imgPerro, R.id.imgCat, R.id.imgOtro, R.id.imgEncontrar, R.id.imgEventos})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.imgPerro:
@@ -157,11 +155,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentG);
                 break;
             case R.id.imgOtro:
+                Toast.makeText(getApplicationContext(), "Estamos trabajando en esta sección", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.imgEncontrar:
+                Toast.makeText(getApplicationContext(), "Estamos trabajando en esta sección", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.imgEventos:
+                Toast.makeText(getApplicationContext(), "Estamos trabajando en esta sección", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
-
-
 }
