@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.Switch;
 
 import com.fundaciones.andrearodriguez.fundaciones.FundacionesApp;
 import com.fundaciones.andrearodriguez.fundaciones.R;
@@ -34,8 +33,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     EditText txtPassword;
     @Bind(R.id.wraperpassword)
     TextInputLayout wraperpassword;
-    @Bind(R.id.swichRemember)
-    Switch swichRemember;
     @Bind(R.id.btnSignIn)
     Button btnSignIn;
     @Bind(R.id.btnSignUp)
@@ -160,11 +157,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     public void onSharedPReferences(String email, String password) {
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("email", email);
-        editor.putString("password", password);
-        editor.commit();
-        editor.apply();
+
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("email", email);
+            editor.putString("password", password);
+            editor.commit();
+            editor.apply();
     }
 
 

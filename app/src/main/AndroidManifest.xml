@@ -12,7 +12,7 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <application
-        android:name="com.fundaciones.andrearodriguez.fundaciones.FundacionesApp"
+        android:name=".FundacionesApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -23,7 +23,7 @@
             android:value="@string/CLOUDINARY_URL" />
 
         <activity
-            android:name="com.fundaciones.andrearodriguez.fundaciones.login.ui.LoginActivity"
+            android:name=".login.ui.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,29 +32,37 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.fundaciones.andrearodriguez.fundaciones.signup.ui.SignupActivity"
+            android:name=".signup.ui.SignupActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.fundaciones.andrearodriguez.fundaciones.login.ui.LoginActivity" />
         </activity>
         <activity
-            android:name="com.fundaciones.andrearodriguez.fundaciones.splash.SplashScreenActivity"
+            android:name=".splash.SplashScreenActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.fundaciones.andrearodriguez.fundaciones.main.ui.MainActivity"
+            android:name=".main.ui.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.fundaciones.andrearodriguez.fundaciones.perrolist.ui.PerroListActivity"
+            android:name=".perrolist.ui.PerroListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.fundaciones.andrearodriguez.fundaciones.main.ui.MainActivity" />
         </activity>
-        <activity android:name="com.fundaciones.andrearodriguez.fundaciones.gatolist.ui.GatoListActivity"
+        <activity
+            android:name=".gatolist.ui.GatoListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fundaciones.andrearodriguez.fundaciones.main.ui.MainActivity" />
+        </activity>
+        <activity android:name=".otroslist.ui.OtrosListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
@@ -62,7 +70,6 @@
                 android:value="com.fundaciones.andrearodriguez.fundaciones.main.ui.MainActivity" />
 
         </activity>
-
     </application>
 
 </manifest>

@@ -3,6 +3,7 @@ package com.fundaciones.andrearodriguez.fundaciones.domine.di;
 import com.fundaciones.andrearodriguez.fundaciones.domine.FirebaseFundacionesAPI;
 import com.fundaciones.andrearodriguez.fundaciones.domine.FirebaseGatosAPI;
 import com.fundaciones.andrearodriguez.fundaciones.domine.FirebaseLoginAPI;
+import com.fundaciones.andrearodriguez.fundaciones.domine.FirebaseOtrosAPI;
 import com.fundaciones.andrearodriguez.fundaciones.domine.FirebasePerrosAPI;
 import com.firebase.client.Firebase;
 
@@ -43,6 +44,13 @@ public class DomainModule {
     FirebaseGatosAPI providesFirebaseGatosAPI(Firebase firebase){
         return new FirebaseGatosAPI(firebase);
     }
+
+    @Provides
+    @Singleton
+    FirebaseOtrosAPI providesFirebaseOtrosAPI(Firebase firebase){
+        return new FirebaseOtrosAPI(firebase);
+    }
+
     @Provides
     @Singleton
     Firebase providesFirebase(String firebaseURL){

@@ -17,9 +17,6 @@ public class PerroListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perro);
-
-
-
     }
 
 
@@ -28,7 +25,5 @@ public class PerroListActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_fav, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
-
 
 }

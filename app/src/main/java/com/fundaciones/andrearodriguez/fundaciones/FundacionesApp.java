@@ -25,6 +25,12 @@ import com.fundaciones.andrearodriguez.fundaciones.login.ui.LoginView;
 import com.fundaciones.andrearodriguez.fundaciones.main.di.DaggerMainComponent;
 import com.fundaciones.andrearodriguez.fundaciones.main.di.MainComponent;
 import com.fundaciones.andrearodriguez.fundaciones.main.di.MainModule;
+import com.fundaciones.andrearodriguez.fundaciones.otroslist.di.DaggerOtrosListComponent;
+import com.fundaciones.andrearodriguez.fundaciones.otroslist.di.OtrosListComponent;
+import com.fundaciones.andrearodriguez.fundaciones.otroslist.di.OtrosListModule;
+import com.fundaciones.andrearodriguez.fundaciones.otroslist.ui.OtrosListFragment;
+import com.fundaciones.andrearodriguez.fundaciones.otroslist.ui.OtrosListView;
+import com.fundaciones.andrearodriguez.fundaciones.otroslist.ui.adapter.OnItemClickListenerOtros;
 import com.fundaciones.andrearodriguez.fundaciones.perrolist.di.DaggerPerroLisComponent;
 import com.fundaciones.andrearodriguez.fundaciones.perrolist.di.PerroLisComponent;
 import com.fundaciones.andrearodriguez.fundaciones.perrolist.di.PerroListModule;
@@ -145,6 +151,16 @@ public class FundacionesApp extends Application {
                 .domainModule(domainModule)
                 .libsModule(new LibsModule(null))
                 .addGatoModule(new AddGatoModule(view))
+                .build();
+    }
+
+    public OtrosListComponent getOtrosListComponent (OtrosListFragment fragment, OtrosListView view, OnItemClickListenerOtros clickListener){
+        return DaggerOtrosListComponent
+                .builder()
+                .fundacionAppModule(fundacionAppModule)
+                .domainModule(domainModule)
+                .libsModule(new LibsModule(fragment))
+                .otrosListModule(new OtrosListModule(view, clickListener))
                 .build();
     }
 

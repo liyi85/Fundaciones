@@ -21,6 +21,7 @@ import com.fundaciones.andrearodriguez.fundaciones.R;
 import com.fundaciones.andrearodriguez.fundaciones.gatolist.ui.GatoListActivity;
 import com.fundaciones.andrearodriguez.fundaciones.login.ui.LoginActivity;
 import com.fundaciones.andrearodriguez.fundaciones.main.MainPresenter;
+import com.fundaciones.andrearodriguez.fundaciones.otroslist.ui.OtrosListActivity;
 import com.fundaciones.andrearodriguez.fundaciones.perrolist.ui.PerroListActivity;
 
 import javax.inject.Inject;
@@ -155,7 +156,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentG);
                 break;
             case R.id.imgOtro:
-                Toast.makeText(getApplicationContext(), "Estamos trabajando en esta sección", Toast.LENGTH_SHORT).show();
+                Intent intentO = new Intent(this, OtrosListActivity.class);
+                startActivity(intentO);
                 break;
             case R.id.imgEncontrar:
                 Toast.makeText(getApplicationContext(), "Estamos trabajando en esta sección", Toast.LENGTH_SHORT).show();

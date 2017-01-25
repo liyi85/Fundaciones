@@ -386,6 +386,7 @@ public class SignupActivity extends AppCompatActivity implements SignupView, Add
     public void onUploadError(String error) {
         showSnackbar(error);
     }
+
     private void showSnackbar(String msg) {
         Snackbar.make(layoutMainContainer2, msg, Snackbar.LENGTH_SHORT).show();
     }
