@@ -68,12 +68,8 @@ public class AddEventoFragment extends DialogFragment implements DialogInterface
     EditText txtLugar;
     @Bind(R.id.wraperlugar)
     TextInputLayout wraperlugar;
-    @Bind(R.id.txtFecha)
-    TextView txtFecha;
     @Bind(R.id.etFecha)
     EditText etFecha;
-    @Bind(R.id.txtHora)
-    TextView txtHora;
     @Bind(R.id.txtTipo)
     TextView txtTipo;
     @Bind(R.id.spinnerTipo)
@@ -82,7 +78,6 @@ public class AddEventoFragment extends DialogFragment implements DialogInterface
     FrameLayout containerAddE;
     @Bind(R.id.etHora)
     EditText etHora;
-
 
     private String photoPath;
     private FundacionesApp app;
