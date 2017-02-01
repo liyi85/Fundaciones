@@ -1,4 +1,4 @@
-package com.fundaciones.andrearodriguez.fundaciones.otroslist.ui;
+package com.fundaciones.andrearodriguez.fundaciones.eventoslist.ui;
 
 
 import android.Manifest;
@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -29,11 +30,11 @@ import android.widget.Toast;
 import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
 import com.fundaciones.andrearodriguez.fundaciones.FundacionesApp;
 import com.fundaciones.andrearodriguez.fundaciones.R;
-import com.fundaciones.andrearodriguez.fundaciones.addotros.ui.AddOTrosFragment;
-import com.fundaciones.andrearodriguez.fundaciones.entities.Paticas;
-import com.fundaciones.andrearodriguez.fundaciones.otroslist.OtrosListPresenter;
-import com.fundaciones.andrearodriguez.fundaciones.otroslist.ui.adapter.OnItemClickListenerOtros;
-import com.fundaciones.andrearodriguez.fundaciones.otroslist.ui.adapter.OtrostListAdapter;
+import com.fundaciones.andrearodriguez.fundaciones.addevento.ui.AddEventoFragment;
+import com.fundaciones.andrearodriguez.fundaciones.entities.Eventos;
+import com.fundaciones.andrearodriguez.fundaciones.eventoslist.EventosListPresenter;
+import com.fundaciones.andrearodriguez.fundaciones.eventoslist.ui.adapter.EventosListAdapter;
+import com.fundaciones.andrearodriguez.fundaciones.eventoslist.ui.adapter.OnItemClickListenerEvento;
 
 import java.io.ByteArrayOutputStream;
 
@@ -46,29 +47,32 @@ import butterknife.OnClick;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class OtrosListFragment extends Fragment implements OtrosListView, OnItemClickListenerOtros {
+public class EventosListFragment extends Fragment implements EventosListView, OnItemClickListenerEvento {
 
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
     @Bind(R.id.appbar)
     AppBarLayout appbar;
-    @Bind(R.id.recyclerViewOtros)
-    RecyclerView recyclerViewOtros;
-    @Bind(R.id.progresBarAddOtros)
-    ProgressBar progresBarAddOtros;
+    @Bind(R.id.recyclerViewEventos)
+    RecyclerView recyclerViewEventos;
+    @Bind(R.id.progresBarAddEvento)
+    ProgressBar progresBarAddEvento;
+    @Bind(R.id.fab)
+    FloatingActionButton fab;
     @Bind(R.id.main_content)
     CoordinatorLayout mainContent;
 
     @Inject
-    OtrostListAdapter adapter;
+    EventosListAdapter adapter;
 
     @Inject
-    OtrosListPresenter presenter;
+    EventosListPresenter presenter;
+
 
     private static final int MY_PERMISSIONS_REQUEST_CAMERA = 1 ;
 
-    public OtrosListFragment() {
+    public EventosListFragment() {
         // Required empty public constructor
     }
 
@@ -81,25 +85,24 @@ public class OtrosListFragment extends Fragment implements OtrosListView, OnItem
 
     private void setupInjection() {
         FundacionesApp app = (FundacionesApp) getActivity().getApplication();
-        app.getOtrosListComponent(this, this, this).inject(this);
+        app.getEventoListComponent(this, this, this).inject(this);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_otros_list, container, false);
+        View v = inflater.inflate(R.layout.fragment_eventos_list, container, false);
         ButterKnife.bind(this, v);
         setupToolbar();
         setupRecyclerView();
         presenter.subscribe();
         return v;
     }
+
     private void setupRecyclerView() {
-        recyclerViewOtros.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerViewOtros.setAdapter(adapter);
+        recyclerViewEventos.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerViewEventos.setAdapter(adapter);
     }
-
-
 
     @Override
     public void onDestroyView() {
@@ -108,7 +111,7 @@ public class OtrosListFragment extends Fragment implements OtrosListView, OnItem
     }
 
     private void setupToolbar() {
-        toolbar.setTitle(R.string.main_titles_otros);
+        toolbar.setTitle(R.string.main_titles_eventos);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -116,46 +119,47 @@ public class OtrosListFragment extends Fragment implements OtrosListView, OnItem
 
     @Override
     public void showList() {
-        recyclerViewOtros.setVisibility(View.VISIBLE);
+        recyclerViewEventos.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideList() {
-        recyclerViewOtros.setVisibility(View.GONE);
+        recyclerViewEventos.setVisibility(View.GONE);
     }
 
     @Override
     public void showProgress() {
-        progresBarAddOtros.setVisibility(View.VISIBLE);
+        progresBarAddEvento.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideProgress() {
-        progresBarAddOtros.setVisibility(View.GONE);
+        progresBarAddEvento.setVisibility(View.GONE);
 
     }
 
     @Override
-    public void addOtros(Paticas paticas) {
-        adapter.addOtros(paticas);
+    public void addEvento(Eventos eventos) {
+        adapter.addEvento(eventos);
     }
 
     @Override
-    public void removeOtros(Paticas paticas) {
-        adapter.removeOtros(paticas);
+    public void removeEvento(Eventos eventos) {
+        adapter.removeEvento(eventos);
     }
 
     @Override
-    public void onOtrosError(String error) {
+    public void onEventoError(String error) {
         Snackbar.make(mainContent, error, Snackbar.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onOtrosClick(Paticas paticas) {
-//        Snackbar.make(mainContent, R.string.perroClick, Snackbar.LENGTH_SHORT).show();
+    public void onEventoClick(Eventos eventos) {
+
     }
+
     @Override
-    public void onShareclick(Paticas paticas, ImageView img) {
+    public void onShareclick(Eventos eventos, ImageView img) {
         try{
             Drawable dr = ((ImageView) img).getDrawable();
             Bitmap bitmap =  ((GlideBitmapDrawable)dr.getCurrent()).getBitmap();
@@ -174,18 +178,18 @@ public class OtrosListFragment extends Fragment implements OtrosListView, OnItem
             Toast.makeText(getActivity(), R.string.cargando_fotos, Toast.LENGTH_SHORT).show();
 
         }
-
     }
 
     @Override
-    public void onDeleteClick(Paticas paticas) {
-        presenter.removeOtros(paticas);
+    public void onDeleteClick(Eventos eventos) {
+
+        presenter.removeEvento(eventos);
     }
 
     @OnClick(R.id.fab)
-    public void addOtros() {
+    public void addEvento() {
         checkCameraPermission();
-        new AddOTrosFragment().show(getActivity().getSupportFragmentManager(), getString(R.string.addcontact_messagge_title));
+        new AddEventoFragment().show(getActivity().getSupportFragmentManager(), getString(R.string.addcontact_messagge_title));
     }
 
     private void checkCameraPermission() {
@@ -220,5 +224,4 @@ public class OtrosListFragment extends Fragment implements OtrosListView, OnItem
             }
         }
     }
-
 }

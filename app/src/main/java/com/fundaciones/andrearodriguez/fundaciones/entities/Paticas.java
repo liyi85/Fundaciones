@@ -23,6 +23,15 @@ public class Paticas {
     private String vacunacion;
     private String esterilizacion;
     private String discapacitado;
+    private String especie;
+
+    public String getEspecie() {
+        return especie;
+    }
+
+    public void setEspecie(String especie) {
+        this.especie = especie;
+    }
 
     public String getDiscapacitado() {
         return discapacitado;

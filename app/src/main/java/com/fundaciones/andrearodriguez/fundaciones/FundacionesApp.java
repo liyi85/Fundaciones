@@ -2,15 +2,30 @@ package com.fundaciones.andrearodriguez.fundaciones;
 
 import android.app.Application;
 
+import com.firebase.client.Firebase;
+import com.fundaciones.andrearodriguez.fundaciones.addevento.di.AddEventoComponent;
+import com.fundaciones.andrearodriguez.fundaciones.addevento.di.AddEventoModule;
+import com.fundaciones.andrearodriguez.fundaciones.addevento.di.DaggerAddEventoComponent;
+import com.fundaciones.andrearodriguez.fundaciones.addevento.ui.AddEventoView;
 import com.fundaciones.andrearodriguez.fundaciones.addgato.di.AddGatoComponent;
 import com.fundaciones.andrearodriguez.fundaciones.addgato.di.AddGatoModule;
 import com.fundaciones.andrearodriguez.fundaciones.addgato.di.DaggerAddGatoComponent;
 import com.fundaciones.andrearodriguez.fundaciones.addgato.ui.AddGatoView;
+import com.fundaciones.andrearodriguez.fundaciones.addotros.di.AddOtroComponent;
+import com.fundaciones.andrearodriguez.fundaciones.addotros.di.AddOtrosModule;
+import com.fundaciones.andrearodriguez.fundaciones.addotros.di.DaggerAddOtroComponent;
+import com.fundaciones.andrearodriguez.fundaciones.addotros.ui.AddOtrosView;
 import com.fundaciones.andrearodriguez.fundaciones.addperro.di.AddPerroComponent;
 import com.fundaciones.andrearodriguez.fundaciones.addperro.di.AddPerroModule;
 import com.fundaciones.andrearodriguez.fundaciones.addperro.di.DaggerAddPerroComponent;
 import com.fundaciones.andrearodriguez.fundaciones.addperro.ui.AddPerroView;
 import com.fundaciones.andrearodriguez.fundaciones.domine.di.DomainModule;
+import com.fundaciones.andrearodriguez.fundaciones.eventoslist.di.DaggerEventoListComponent;
+import com.fundaciones.andrearodriguez.fundaciones.eventoslist.di.EventoListComponent;
+import com.fundaciones.andrearodriguez.fundaciones.eventoslist.di.EventoListModule;
+import com.fundaciones.andrearodriguez.fundaciones.eventoslist.ui.EventosListFragment;
+import com.fundaciones.andrearodriguez.fundaciones.eventoslist.ui.EventosListView;
+import com.fundaciones.andrearodriguez.fundaciones.eventoslist.ui.adapter.OnItemClickListenerEvento;
 import com.fundaciones.andrearodriguez.fundaciones.gatolist.di.DaggerGatoListComponent;
 import com.fundaciones.andrearodriguez.fundaciones.gatolist.di.GatoListComponent;
 import com.fundaciones.andrearodriguez.fundaciones.gatolist.di.GatoListModule;
@@ -42,7 +57,6 @@ import com.fundaciones.andrearodriguez.fundaciones.signup.di.SignupComponent;
 import com.fundaciones.andrearodriguez.fundaciones.signup.di.SignupModule;
 import com.fundaciones.andrearodriguez.fundaciones.signup.ui.AddFundacionView;
 import com.fundaciones.andrearodriguez.fundaciones.signup.ui.SignupView;
-import com.firebase.client.Firebase;
 
 /**
  * Created by andrearodriguez on 9/21/16.
@@ -164,5 +178,34 @@ public class FundacionesApp extends Application {
                 .build();
     }
 
+    public AddOtroComponent getAddOtroComponent (AddOtrosView view){
+        return DaggerAddOtroComponent
+                .builder()
+                .fundacionAppModule(fundacionAppModule)
+                .domainModule(domainModule)
+                .libsModule(new LibsModule(null))
+                .addOtrosModule(new AddOtrosModule(view))
+                .build();
+    }
+
+    public EventoListComponent getEventoListComponent (EventosListFragment fragment, EventosListView view, OnItemClickListenerEvento clickListener){
+        return DaggerEventoListComponent
+                .builder()
+                .fundacionAppModule(fundacionAppModule)
+                .domainModule(domainModule)
+                .libsModule(new LibsModule(fragment))
+                .eventoListModule(new EventoListModule(view, clickListener))
+                .build();
+    }
+
+    public AddEventoComponent getAddEventoComponent (AddEventoView view){
+        return DaggerAddEventoComponent
+                .builder()
+                .fundacionAppModule(fundacionAppModule)
+                .domainModule(domainModule)
+                .libsModule(new LibsModule(null))
+                .addEventoModule(new AddEventoModule(view))
+                .build();
+    }
 
 }

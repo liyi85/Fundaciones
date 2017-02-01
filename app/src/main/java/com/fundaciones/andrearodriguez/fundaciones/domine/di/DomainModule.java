@@ -1,5 +1,6 @@
 package com.fundaciones.andrearodriguez.fundaciones.domine.di;
 
+import com.fundaciones.andrearodriguez.fundaciones.domine.FirebaseEventosAPI;
 import com.fundaciones.andrearodriguez.fundaciones.domine.FirebaseFundacionesAPI;
 import com.fundaciones.andrearodriguez.fundaciones.domine.FirebaseGatosAPI;
 import com.fundaciones.andrearodriguez.fundaciones.domine.FirebaseLoginAPI;
@@ -49,6 +50,11 @@ public class DomainModule {
     @Singleton
     FirebaseOtrosAPI providesFirebaseOtrosAPI(Firebase firebase){
         return new FirebaseOtrosAPI(firebase);
+    }
+    @Provides
+    @Singleton
+    FirebaseEventosAPI providesFirebaseEventosAPI(Firebase firebase){
+        return new FirebaseEventosAPI(firebase);
     }
 
     @Provides

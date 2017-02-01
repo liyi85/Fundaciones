@@ -47,9 +47,9 @@ public class OtrostListAdapter extends RecyclerView.Adapter<OtrostListAdapter.Vi
         imageLoader.load(holder.imgOtro, currenOtro.getUrl());
 
         holder.txtNombre.setText(currenOtro.getNombre());
-        holder.txtTamano.setText(currenOtro.getTamaño());
         holder.txtSexo.setText(currenOtro.getSexo());
         holder.txtEdad.setText(currenOtro.getEdad());
+        holder.txtEspecie.setText(currenOtro.getEspecie());
 
         holder.setOnItemClickListener(currenOtro, clickListener);
         if (currenOtro.isPublishedByMe()) {
@@ -86,8 +86,6 @@ public class OtrostListAdapter extends RecyclerView.Adapter<OtrostListAdapter.Vi
         TextView txtSexo;
         @Bind(R.id.txtEdad)
         TextView txtEdad;
-        @Bind(R.id.txtTamano)
-        TextView txtTamano;
         @Bind(R.id.imgShare)
         ImageButton imgShare;
         @Bind(R.id.imgDelete)

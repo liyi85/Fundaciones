@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.fundaciones.andrearodriguez.fundaciones.FundacionesApp;
 import com.fundaciones.andrearodriguez.fundaciones.R;
+import com.fundaciones.andrearodriguez.fundaciones.eventoslist.ui.EventosListActivity;
 import com.fundaciones.andrearodriguez.fundaciones.gatolist.ui.GatoListActivity;
 import com.fundaciones.andrearodriguez.fundaciones.login.ui.LoginActivity;
 import com.fundaciones.andrearodriguez.fundaciones.main.MainPresenter;
@@ -163,7 +164,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Estamos trabajando en esta sección", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.imgEventos:
-                Toast.makeText(getApplicationContext(), "Estamos trabajando en esta sección", Toast.LENGTH_SHORT).show();
+                Intent intentE = new Intent(this, EventosListActivity.class);
+                startActivity(intentE);
                 break;
         }
     }

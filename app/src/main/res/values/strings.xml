@@ -88,9 +88,29 @@
         <item>No</item>
     </string-array>
 
+    <string-array name="SelectEspecie">
+        <item>Hamster</item>
+        <item>Paloma</item>
+        <item>Ratón</item>
+        <item>Conejo</item>
+        <item>Caballo</item>
+        <item>Otros</item>
+        <item>OtrasAves</item>
+    </string-array>
+
+    <string-array name="SelectTipo">
+        <item>Adopciones</item>
+        <item>Donaciones</item>
+        <item>Adopciones/Donaciones</item>
+        <item>Bañaton</item>
+        <item>Construcción</item>
+        <item>Adopciones/Bañaton</item>
+    </string-array>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="main_titles_otros">Otros</string>
+    <string name="main_titles_eventos">Eventos</string>
 
 </resources>

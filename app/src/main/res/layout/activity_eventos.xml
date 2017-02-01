@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,8 +9,8 @@
         android:id="@+id/fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.fundaciones.andrearodriguez.fundaciones.otroslist.ui.OtrosListFragment"
-        tools:layout="@layout/fragment_otros_list" />
+        android:name="com.fundaciones.andrearodriguez.fundaciones.eventoslist.ui.EventosListFragment"
+        tools:layout="@layout/fragment_eventos_list" />
 
 
 </LinearLayout>

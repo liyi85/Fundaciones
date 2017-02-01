@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/containerAddO">
+    android:id="@+id/containerAddE">
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -13,7 +13,7 @@
         <ImageButton
             android:layout_width="140dp"
             android:layout_height="150dp"
-            android:id="@+id/imgOtro"
+            android:id="@+id/imgEvent"
             android:src="@android:drawable/ic_menu_camera"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
@@ -32,12 +32,12 @@
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/wrapernameotro">
+                    android:id="@+id/wrapernameperro">
                     <EditText
                         android:layout_marginTop="10dp"
-                        android:id="@+id/txtNombre"
+                        android:id="@+id/txtNombreE"
                         android:layout_height="match_parent"
-                        android:hint="Nombre"
+                        android:hint="Nombre del Evento"
                         android:textColor="@android:color/black"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:layout_width="match_parent" />
@@ -46,8 +46,8 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="0.9"
                 android:orientation="horizontal">
 
@@ -57,25 +57,20 @@
                     android:orientation="horizontal">
 
                     <android.support.design.widget.TextInputLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/wraperedad"
+                        android:id="@+id/wraperlugar"
                         android:paddingBottom="10dp">
                         <EditText
                             android:layout_marginTop="10dp"
-                            android:id="@+id/txtEdad"
-                            android:layout_width="50dp"
-                            android:layout_height="wrap_content"
-                            android:inputType="number"
-                            android:hint="Edad"
+                            android:id="@+id/txtLugar"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="text"
+                            android:hint="Lugar del evento"
                             android:textAppearance="?android:attr/textAppearanceSmall" />
                     </android.support.design.widget.TextInputLayout>
 
-                    <Spinner
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/spinnerEdad"
-                        android:paddingTop="15dp"/>
 
                 </LinearLayout>
             </LinearLayout>
@@ -84,37 +79,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Especie"
-                    android:id="@+id/txtEspecie"
+                    android:text="Fecha"
+                    android:id="@+id/txtFecha"
                     android:paddingBottom="25dp"/>
 
-                <Spinner
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/spinnerEspecie" />
+                    android:hint="Selecciona la fecha"
+                    android:id="@+id/etFecha"
+                    android:layout_centerHorizontal="true"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
+
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sexo"
-                    android:id="@+id/txtSexo"
+                    android:text="Hora"
+                    android:id="@+id/txtHora"
                     android:paddingBottom="25dp"/>
-
-                <Spinner
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/spinnerSexo" />
+                    android:hint="Selecciona la hora"
+                    android:id="@+id/etHora"
+                    android:layout_centerHorizontal="true"
+                    android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+
+
             </LinearLayout>
-
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -123,48 +125,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Esterilizado"
-                    android:id="@+id/txtEsteril"
+                    android:text="Tipo de Evento"
+                    android:id="@+id/txtTipo"
                     android:paddingBottom="25dp"/>
 
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/spinnerEsteril"
+                    android:id="@+id/spinnerTipo"
                     />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Vacunado"
-                    android:id="@+id/txtVacunado"
-                    android:paddingBottom="25dp"/>
-
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/spinnerVacuna" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Discapacidad"
-                    android:id="@+id/txtDiscapacidad" />
-
-                <Spinner
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/spinnerDiscapacidad" />
-            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
