@@ -9,6 +9,7 @@ import com.fundaciones.andrearodriguez.fundaciones.entities.Paticas;
 
 
 import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * Created by andrearodriguez on 8/18/16.
@@ -62,7 +63,7 @@ public class PerroListPresenterImp implements PerroListPresenter{
     }
 
     @Override
-    @Subscribe
+    @Subscribe (threadMode = ThreadMode.MAIN)
     public void onEventMainThread(PerroListEvent event) {
         if (this.view != null) {
             if (view != null){

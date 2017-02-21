@@ -94,4 +94,15 @@ public class Eventos {
     public void setTipoevento(String tipoevento) {
         this.tipoevento = tipoevento;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        boolean equal = false;
+
+        if (obj instanceof Eventos){
+            Eventos eventos = (Eventos)obj;
+            equal = this.id.equals(eventos.getId());
+        }
+        return equal;
+    }
 }

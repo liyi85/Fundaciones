@@ -5,6 +5,7 @@ import com.fundaciones.andrearodriguez.fundaciones.addotros.ui.AddOtrosView;
 import com.fundaciones.andrearodriguez.fundaciones.libs.base.EvenBus;
 
 import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * Created by andrearodriguez on 1/25/17.
@@ -39,7 +40,7 @@ public class AddOtrosPresenterImp implements AddOtrosPresenter{
     }
 
     @Override
-    @Subscribe
+    @Subscribe (threadMode = ThreadMode.MAIN)
     public void onEventMainThread(AddOtrosEvent event) {
         if(this.view != null){
             switch (event.getType()){

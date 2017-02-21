@@ -5,6 +5,7 @@ import com.fundaciones.andrearodriguez.fundaciones.addgato.ui.AddGatoView;
 import com.fundaciones.andrearodriguez.fundaciones.libs.base.EvenBus;
 
 import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * Created by andrearodriguez on 12/22/16.
@@ -40,7 +41,7 @@ public class AddGatoPresenterImp implements AddGatoPresenter{
     }
 
     @Override
-    @Subscribe
+    @Subscribe (threadMode = ThreadMode.MAIN)
     public void onEventMainThread(AddGatoEvent event) {
         if(this.view != null){
             switch (event.getType()){

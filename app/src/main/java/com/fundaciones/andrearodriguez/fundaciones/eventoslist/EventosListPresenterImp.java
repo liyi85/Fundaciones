@@ -6,6 +6,7 @@ import com.fundaciones.andrearodriguez.fundaciones.eventoslist.ui.EventosListVie
 import com.fundaciones.andrearodriguez.fundaciones.libs.base.EvenBus;
 
 import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * Created by andrearodriguez on 1/25/17.
@@ -60,7 +61,7 @@ public class EventosListPresenterImp implements EventosListPresenter{
     }
 
     @Override
-    @Subscribe
+    @Subscribe (threadMode = ThreadMode.MAIN)
     public void onEventMainThread(EventosListEvent event) {
         if (this.view != null) {
             if (view != null){

@@ -5,6 +5,7 @@ import com.fundaciones.andrearodriguez.fundaciones.addperro.ui.AddPerroView;
 import com.fundaciones.andrearodriguez.fundaciones.libs.base.EvenBus;
 
 import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 
 /**
@@ -40,7 +41,7 @@ public class AddPerroPresenterImp implements AddPerroPresenter{
     }
 
     @Override
-    @Subscribe
+    @Subscribe (threadMode = ThreadMode.MAIN)
     public void onEventMainThread(AddPerroEvent event) {
         if(this.view != null){
             switch (event.getType()){

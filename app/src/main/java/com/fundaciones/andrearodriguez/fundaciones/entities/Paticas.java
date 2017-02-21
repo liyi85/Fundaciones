@@ -128,4 +128,15 @@ public class Paticas {
     public void setEsterilizacion(String esterilizacion) {
         this.esterilizacion = esterilizacion;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        boolean equal = false;
+
+        if (obj instanceof Paticas){
+            Paticas paticas = (Paticas) obj;
+            equal = this.id.equals(paticas.getId());
+        }
+        return equal;
+    }
 }

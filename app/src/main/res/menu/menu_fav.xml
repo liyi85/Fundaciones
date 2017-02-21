@@ -11,7 +11,4 @@
         android:icon="@android:drawable/ic_menu_search"
         app:showAsAction="always" />
 
-
-
-
 </menu>

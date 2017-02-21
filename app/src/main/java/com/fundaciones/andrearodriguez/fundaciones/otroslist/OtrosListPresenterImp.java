@@ -6,6 +6,7 @@ import com.fundaciones.andrearodriguez.fundaciones.otroslist.events.OtrosListEve
 import com.fundaciones.andrearodriguez.fundaciones.otroslist.ui.OtrosListView;
 
 import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * Created by andrearodriguez on 1/24/17.
@@ -60,7 +61,7 @@ public class OtrosListPresenterImp implements OtrosListPresenter {
     }
 
     @Override
-    @Subscribe
+    @Subscribe (threadMode = ThreadMode.MAIN)
     public void onEventMainThread(OtrosListEvent event) {
         if (this.view != null) {
             if (view != null){

@@ -3,6 +3,7 @@ package com.fundaciones.andrearodriguez.fundaciones.addevento.ui;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
@@ -31,6 +32,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import com.fundaciones.andrearodriguez.fundaciones.FundacionesApp;
 import com.fundaciones.andrearodriguez.fundaciones.R;
@@ -41,10 +43,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -56,7 +61,7 @@ import butterknife.OnClick;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AddEventoFragment extends DialogFragment implements DialogInterface.OnShowListener, AddEventoView, DatePickerDialog.OnDateSetListener {
+public class AddEventoFragment extends DialogFragment implements DialogInterface.OnShowListener, AddEventoView, DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     @Bind(R.id.imgEvent)
     ImageButton imgEvent;
@@ -81,6 +86,7 @@ public class AddEventoFragment extends DialogFragment implements DialogInterface
 
     private String photoPath;
     private FundacionesApp app;
+    Calendar myCalendar = Calendar.getInstance();
 
     ArrayAdapter<CharSequence> adapterTipo;
 
@@ -321,7 +327,6 @@ public class AddEventoFragment extends DialogFragment implements DialogInterface
         mediaScanIntent.setData(contentUri);
         getActivity().sendBroadcast(mediaScanIntent);
 
-
     }
 
     private String getRealPathFromURI(Uri contentURI) {
@@ -381,9 +386,89 @@ public class AddEventoFragment extends DialogFragment implements DialogInterface
     }
 
 
+    @OnClick({R.id.etFecha, R.id.etHora})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.etFecha:
+                showDatePickerDialog();
+                break;
+
+            case R.id.etHora:
+                showTimePickerDialog();
+                break;
+
+        }
+    }
+
+    private void showTimePickerDialog() {
+
+        TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), time,
+                                                myCalendar.get(Calendar.HOUR),
+                                                myCalendar.get(Calendar.MINUTE),
+                                                false);
+        timePickerDialog.show();
+    }
+
+    TimePickerDialog.OnTimeSetListener time = new TimePickerDialog.OnTimeSetListener() {
+
+        @Override
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            myCalendar.set(Calendar.HOUR, hourOfDay);
+            myCalendar.set(Calendar.MINUTE, minute);
+            etHora.setText(hourOfDay + ":" + minute);
+        }
+    };
+
+    public void showDatePickerDialog() {
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), date,
+                                                myCalendar.get(Calendar.YEAR),
+                                                myCalendar.get(Calendar.MONTH),
+                                                myCalendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
+    }
+
+    DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            myCalendar.set(Calendar.YEAR, year);
+            myCalendar.set(Calendar.MONTH, monthOfYear);
+            myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            etFecha.setText(dayOfMonth + "-" + monthOfYear + "-" + year);
+            String date = etFecha.getText().toString();
+            SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy"); // input date
+            Date outDate = null;
+            try {
+                outDate = dateFormatter.parse(date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            Locale esLocale = new Locale("es", "ES");
+
+            SimpleDateFormat dayFormatter = new SimpleDateFormat("dd"); // output day
+            SimpleDateFormat monthFormatter = new SimpleDateFormat("MMM", esLocale); // output month
+            SimpleDateFormat yearFormatter = new SimpleDateFormat("yyyy"); // output year
+
+            String day = dayFormatter.format(outDate);
+            String monthy = monthFormatter.format(outDate);
+            String years = yearFormatter.format(outDate);
+
+            etFecha.setText(day + " " + monthy + " " + years);
+        }
+
+    };
+
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+    }
+
+
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 
     }
 }

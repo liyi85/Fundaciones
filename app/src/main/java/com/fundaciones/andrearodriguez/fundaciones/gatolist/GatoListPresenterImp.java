@@ -6,6 +6,7 @@ import com.fundaciones.andrearodriguez.fundaciones.gatolist.ui.GatoLisView;
 import com.fundaciones.andrearodriguez.fundaciones.libs.base.EvenBus;
 
 import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * Created by andrearodriguez on 12/21/16.
@@ -57,7 +58,7 @@ public class GatoListPresenterImp implements GatoListPresenter {
     }
 
     @Override
-    @Subscribe
+    @Subscribe (threadMode = ThreadMode.MAIN)
     public void onEventMainThread(GatoListEvent event) {
         if (this.view != null) {
             if (view != null){

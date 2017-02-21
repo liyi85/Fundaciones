@@ -5,6 +5,7 @@ import com.fundaciones.andrearodriguez.fundaciones.addevento.ui.AddEventoView;
 import com.fundaciones.andrearodriguez.fundaciones.libs.base.EvenBus;
 
 import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * Created by andrearodriguez on 1/26/17.
@@ -38,7 +39,7 @@ public class AddEventoPresenterImp implements AddEventoPresenter{
     public void uploadPhoto(String nombreevento, String fecha, String lugar, String hora, String path, String tipo) {
         interactor.execute(nombreevento, fecha, lugar, hora, path, tipo);
     }
-    @Subscribe
+    @Subscribe (threadMode = ThreadMode.MAIN)
     @Override
     public void onEventMainThread(AddEventoEvent event) {
         if(this.view != null){
