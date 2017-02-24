@@ -413,9 +413,19 @@ public class AddEventoFragment extends DialogFragment implements DialogInterface
 
         @Override
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            String AM_PM ;
+            int mHour = hourOfDay;
+
+            if(hourOfDay < 12) {
+                AM_PM = "AM";
+            } else {
+                AM_PM = "PM";
+                mHour = mHour-12;
+            }
+
             myCalendar.set(Calendar.HOUR, hourOfDay);
             myCalendar.set(Calendar.MINUTE, minute);
-            etHora.setText(hourOfDay + ":" + minute);
+            etHora.setText(mHour + ":" + minute + " " + AM_PM);
         }
     };
 
