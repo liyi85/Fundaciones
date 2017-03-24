@@ -1,12 +1,13 @@
 package com.fundaciones.andrearodriguez.fundaciones.domine.di;
 
+import com.firebase.client.Firebase;
 import com.fundaciones.andrearodriguez.fundaciones.domine.FirebaseEventosAPI;
 import com.fundaciones.andrearodriguez.fundaciones.domine.FirebaseFundacionesAPI;
 import com.fundaciones.andrearodriguez.fundaciones.domine.FirebaseGatosAPI;
 import com.fundaciones.andrearodriguez.fundaciones.domine.FirebaseLoginAPI;
 import com.fundaciones.andrearodriguez.fundaciones.domine.FirebaseOtrosAPI;
+import com.fundaciones.andrearodriguez.fundaciones.domine.FirebasePerdidosAPI;
 import com.fundaciones.andrearodriguez.fundaciones.domine.FirebasePerrosAPI;
-import com.firebase.client.Firebase;
 
 import javax.inject.Singleton;
 
@@ -55,6 +56,12 @@ public class DomainModule {
     @Singleton
     FirebaseEventosAPI providesFirebaseEventosAPI(Firebase firebase){
         return new FirebaseEventosAPI(firebase);
+    }
+
+    @Provides
+    @Singleton
+    FirebasePerdidosAPI providesFirebasePerdidosAPI (Firebase firebase){
+        return new FirebasePerdidosAPI(firebase);
     }
 
     @Provides

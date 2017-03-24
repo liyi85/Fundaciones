@@ -46,6 +46,12 @@ import com.fundaciones.andrearodriguez.fundaciones.otroslist.di.OtrosListModule;
 import com.fundaciones.andrearodriguez.fundaciones.otroslist.ui.OtrosListFragment;
 import com.fundaciones.andrearodriguez.fundaciones.otroslist.ui.OtrosListView;
 import com.fundaciones.andrearodriguez.fundaciones.otroslist.ui.adapter.OnItemClickListenerOtros;
+import com.fundaciones.andrearodriguez.fundaciones.perdidoslist.adapter.OnItemClickPerdidos;
+import com.fundaciones.andrearodriguez.fundaciones.perdidoslist.di.DaggerPerdidoListComponent;
+import com.fundaciones.andrearodriguez.fundaciones.perdidoslist.di.PerdidoListComponent;
+import com.fundaciones.andrearodriguez.fundaciones.perdidoslist.di.PerdidosListModule;
+import com.fundaciones.andrearodriguez.fundaciones.perdidoslist.ui.PerdidosListFragment;
+import com.fundaciones.andrearodriguez.fundaciones.perdidoslist.ui.PerdidosListView;
 import com.fundaciones.andrearodriguez.fundaciones.perrolist.di.DaggerPerroLisComponent;
 import com.fundaciones.andrearodriguez.fundaciones.perrolist.di.PerroLisComponent;
 import com.fundaciones.andrearodriguez.fundaciones.perrolist.di.PerroListModule;
@@ -205,6 +211,16 @@ public class FundacionesApp extends Application {
                 .domainModule(domainModule)
                 .libsModule(new LibsModule(null))
                 .addEventoModule(new AddEventoModule(view))
+                .build();
+    }
+
+    public PerdidoListComponent getPerdidoListComponent (PerdidosListFragment fragment, PerdidosListView view, OnItemClickPerdidos clickPerdidos) {
+        return DaggerPerdidoListComponent
+                .builder()
+                .fundacionAppModule(fundacionAppModule)
+                .domainModule(domainModule)
+                .libsModule(new LibsModule(fragment))
+                .perdidosListModule(new PerdidosListModule(view, clickPerdidos))
                 .build();
     }
 

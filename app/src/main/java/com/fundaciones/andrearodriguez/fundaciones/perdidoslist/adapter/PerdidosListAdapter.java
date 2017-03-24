@@ -1,4 +1,4 @@
-package com.fundaciones.andrearodriguez.fundaciones.perrolist.ui.adapter;
+package com.fundaciones.andrearodriguez.fundaciones.perdidoslist.adapter;
 
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -19,73 +19,72 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
- * Created by andrearodriguez on 9/25/16.
+ * Created by andrearodriguez on 3/24/17.
  */
-public class PerroListAdapter extends RecyclerView.Adapter<PerroListAdapter.ViewHolder> {
+
+public class PerdidosListAdapter extends RecyclerView.Adapter<PerdidosListAdapter.ViewHolder> {
 
 
-    private List<Paticas> perroList;
+    private List<Paticas> perdidosList;
     private ImageLoader imageLoader;
-    private OnItemClickListener clickListener;
+    private OnItemClickPerdidos clickListener;
 
-
-
-    public PerroListAdapter(List<Paticas> perroList, ImageLoader imageLoader, OnItemClickListener clickListener) {
-        this.perroList = perroList;
+    public PerdidosListAdapter(List<Paticas> perdidosList, ImageLoader imageLoader, OnItemClickPerdidos clickListener) {
+        this.perdidosList = perdidosList;
         this.imageLoader = imageLoader;
         this.clickListener = clickListener;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_perro, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_perdidos, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Paticas currenPerro = perroList.get(position);
-        imageLoader.load(holder.imgDog, currenPerro.getUrl());
+        Paticas currenPerdido = perdidosList.get(position);
+        imageLoader.load(holder.imgPerdidos, currenPerdido.getUrl());
 
-        holder.txtNombre.setText(currenPerro.getNombre());
-        holder.txtTamano.setText(currenPerro.getTamaño());
-        holder.txtSexo.setText(currenPerro.getSexo());
-        holder.txtEdad.setText(currenPerro.getEdad());
+        holder.txtNombre.setText(currenPerdido.getNombre());
+        holder.txtSexo.setText(currenPerdido.getSexo());
+        holder.txtEdad.setText(currenPerdido.getEdad());
 
-        holder.setOnItemClickListener(currenPerro, clickListener);
-        if (currenPerro.isPublishedByMe()) {
+        holder.setOnItemClickListener(currenPerdido, clickListener);
+        if (currenPerdido.isPublishedByMe()) {
             holder.imgDelete.setVisibility(View.VISIBLE);
         } else {
             holder.imgDelete.setVisibility(View.GONE);
         }
     }
 
-    public void addPerro(Paticas paticas) {
-        perroList.add(0, paticas);
+    public void addPerdido(Paticas paticas) {
+        perdidosList.add(0, paticas);
         notifyDataSetChanged();
     }
 
-    public void removePerro(Paticas paticas) {
-        perroList.remove(paticas);
+    public void removePerdido(Paticas paticas) {
+        perdidosList.remove(paticas);
         notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        return perroList.size();
+        return perdidosList.size();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.imgDog)
-        ImageView imgDog;
+
+        @Bind(R.id.imgPerdidos)
+        ImageView imgPerdidos;
         @Bind(R.id.txtNombre)
         TextView txtNombre;
+        @Bind(R.id.txtEspecie)
+        TextView txtEspecie;
         @Bind(R.id.txtSexo)
         TextView txtSexo;
         @Bind(R.id.txtEdad)
         TextView txtEdad;
-        @Bind(R.id.txtTamano)
-        TextView txtTamano;
         @Bind(R.id.imgShare)
         ImageButton imgShare;
         @Bind(R.id.imgDelete)
@@ -98,25 +97,25 @@ public class PerroListAdapter extends RecyclerView.Adapter<PerroListAdapter.View
             ButterKnife.bind(this, itemView);
         }
 
-        public void setOnItemClickListener(final Paticas paticas, final OnItemClickListener clickListener) {
-            imgDog.setOnClickListener(new View.OnClickListener() {
+        public void setOnItemClickListener(final Paticas currenPerdido, final OnItemClickPerdidos clickListener) {
+            imgPerdidos.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    clickListener.onPerroClick(paticas);
+                    clickListener.onPerdidoslick(currenPerdido);
                 }
             });
 
             imgShare.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    clickListener.onShareclick(paticas, imgDog);
+                    clickListener.onShareclick(currenPerdido, imgPerdidos);
                 }
             });
 
             imgDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    clickListener.onDeleteClick(paticas);
+                    clickListener.onDeleteClick(currenPerdido);
                 }
             });
         }

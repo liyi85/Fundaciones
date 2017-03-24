@@ -1,4 +1,4 @@
-package com.fundaciones.andrearodriguez.fundaciones.perrolist.ui;
+package com.fundaciones.andrearodriguez.fundaciones.perdidoslist.ui;
 
 
 import android.Manifest;
@@ -30,11 +30,10 @@ import android.widget.Toast;
 import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
 import com.fundaciones.andrearodriguez.fundaciones.FundacionesApp;
 import com.fundaciones.andrearodriguez.fundaciones.R;
-import com.fundaciones.andrearodriguez.fundaciones.addperro.ui.AddPerroFragment;
 import com.fundaciones.andrearodriguez.fundaciones.entities.Paticas;
-import com.fundaciones.andrearodriguez.fundaciones.perrolist.PerroListPresenter;
-import com.fundaciones.andrearodriguez.fundaciones.perrolist.ui.adapter.OnItemClickListener;
-import com.fundaciones.andrearodriguez.fundaciones.perrolist.ui.adapter.PerroListAdapter;
+import com.fundaciones.andrearodriguez.fundaciones.perdidoslist.PerdidosListPresenter;
+import com.fundaciones.andrearodriguez.fundaciones.perdidoslist.adapter.OnItemClickPerdidos;
+import com.fundaciones.andrearodriguez.fundaciones.perdidoslist.adapter.PerdidosListAdapter;
 
 import java.io.ByteArrayOutputStream;
 
@@ -47,33 +46,31 @@ import butterknife.OnClick;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PerroListFragment extends Fragment implements PerroListView, OnItemClickListener {
+public class PerdidosListFragment extends Fragment implements PerdidosListView, OnItemClickPerdidos {
 
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
     @Bind(R.id.appbar)
     AppBarLayout appbar;
-    @Bind(R.id.recyclerViewPerro)
-    RecyclerView recyclerViewPerro;
-    @Bind(R.id.progresBarAddPerro)
-    ProgressBar progresBarAddPerro;
+    @Bind(R.id.recyclerViewPerdido)
+    RecyclerView recyclerViewPerdido;
+    @Bind(R.id.progresBarAddPerdido)
+    ProgressBar progresBarAddPerdido;
     @Bind(R.id.fab)
     FloatingActionButton fab;
     @Bind(R.id.main_content)
     CoordinatorLayout mainContent;
 
     @Inject
-    PerroListAdapter adapter;
+    PerdidosListAdapter adapter;
 
     @Inject
-    PerroListPresenter presenter;
+    PerdidosListPresenter presenter;
 
+    private static final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
 
-    private static final int MY_PERMISSIONS_REQUEST_CAMERA = 1 ;
-
-
-    public PerroListFragment() {
+    public PerdidosListFragment() {
         // Required empty public constructor
     }
 
@@ -86,14 +83,15 @@ public class PerroListFragment extends Fragment implements PerroListView, OnItem
 
     private void setupInjection() {
         FundacionesApp app = (FundacionesApp) getActivity().getApplication();
-        app.getPerroLisComponent(this, this, this).inject(this);
+        app.getPerdidoListComponent(this, this, this).inject(this);
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_perro_list, container, false);
+        // Inflate the layout for this fragment
+        View v = inflater.inflate(R.layout.fragment_perdidos_list, container, false);
         ButterKnife.bind(this, v);
         setupToolbar();
         setupRecyclerView();
@@ -102,11 +100,16 @@ public class PerroListFragment extends Fragment implements PerroListView, OnItem
     }
 
     private void setupRecyclerView() {
-        recyclerViewPerro.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerViewPerro.setAdapter(adapter);
+        recyclerViewPerdido.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerViewPerdido.setAdapter(adapter);
     }
 
-
+    private void setupToolbar() {
+        toolbar.setTitle(R.string.main_titles_perdidos);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
 
     @Override
     public void onDestroyView() {
@@ -114,57 +117,53 @@ public class PerroListFragment extends Fragment implements PerroListView, OnItem
         ButterKnife.unbind(this);
     }
 
-    private void setupToolbar() {
-        toolbar.setTitle(R.string.main_titles_perros);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
-    }
     @Override
     public void showList() {
-        recyclerViewPerro.setVisibility(View.VISIBLE);
+        recyclerViewPerdido.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideList() {
-        recyclerViewPerro.setVisibility(View.GONE);
+        recyclerViewPerdido.setVisibility(View.GONE);
     }
 
     @Override
     public void showProgress() {
-        progresBarAddPerro.setVisibility(View.VISIBLE);
+        progresBarAddPerdido.setVisibility(View.VISIBLE);
+
     }
 
     @Override
     public void hideProgress() {
-        progresBarAddPerro.setVisibility(View.GONE);
+        progresBarAddPerdido.setVisibility(View.GONE);
 
     }
 
     @Override
-    public void addPerro(Paticas paticas) {
-        adapter.addPerro(paticas);
+    public void addPerdido(Paticas paticas) {
+        adapter.addPerdido(paticas);
     }
 
     @Override
-    public void removePerro(Paticas paticas) {
-        adapter.removePerro(paticas);
+    public void removePerdido(Paticas paticas) {
+        adapter.removePerdido(paticas);
     }
 
     @Override
-    public void onPerroError(String error) {
+    public void onPerdidoError(String error) {
         Snackbar.make(mainContent, error, Snackbar.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onPerroClick(Paticas paticas) {
-//        Snackbar.make(mainContent, R.string.perroClick, Snackbar.LENGTH_SHORT).show();
+    public void onPerdidoslick(Paticas paticas) {
+
     }
+
     @Override
     public void onShareclick(Paticas paticas, ImageView img) {
-        try{
+        try {
             Drawable dr = ((ImageView) img).getDrawable();
-            Bitmap bitmap =  ((GlideBitmapDrawable)dr.getCurrent()).getBitmap();
+            Bitmap bitmap = ((GlideBitmapDrawable) dr.getCurrent()).getBitmap();
             //Bitmap bitmap = ((GlideBitmapDrawable)img.getDrawable()).getBitmap();
             Intent share = new Intent(Intent.ACTION_SEND);
             share.setType("image/jpeg");
@@ -172,28 +171,25 @@ public class PerroListFragment extends Fragment implements PerroListView, OnItem
             ByteArrayOutputStream bytes = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
             String path = MediaStore.Images.Media.insertImage(getActivity().getContentResolver(), bitmap, null, null);
-            Uri imageUri =  Uri.parse(path);
+            Uri imageUri = Uri.parse(path);
 
             share.putExtra(Intent.EXTRA_STREAM, imageUri);
             startActivity(Intent.createChooser(share, getString(R.string.photolist_message_share)));
-        }catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(getActivity(), R.string.cargando_fotos, Toast.LENGTH_SHORT).show();
 
         }
-
     }
 
     @Override
     public void onDeleteClick(Paticas paticas) {
-        presenter.removePerro(paticas);
+        presenter.removePerdido(paticas);
     }
-
     @OnClick(R.id.fab)
-    public void addPerro() {
+    public void onViewClicked() {
         checkCameraPermission();
-        new AddPerroFragment().show(getActivity().getSupportFragmentManager(), getString(R.string.addcontact_messagge_title));
+        //new AddPerdidoFragment().show(getActivity().getSupportFragmentManager(), getString(R.string.addcontact_messagge_title));
     }
-
     private void checkCameraPermission() {
         if (ContextCompat.checkSelfPermission(getActivity(),
                 Manifest.permission.CAMERA)
@@ -226,5 +222,4 @@ public class PerroListFragment extends Fragment implements PerroListView, OnItem
             }
         }
     }
-
 }

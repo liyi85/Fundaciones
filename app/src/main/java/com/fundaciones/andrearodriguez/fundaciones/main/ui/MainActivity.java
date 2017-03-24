@@ -14,7 +14,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.fundaciones.andrearodriguez.fundaciones.FundacionesApp;
 import com.fundaciones.andrearodriguez.fundaciones.R;
@@ -23,6 +22,7 @@ import com.fundaciones.andrearodriguez.fundaciones.gatolist.ui.GatoListActivity;
 import com.fundaciones.andrearodriguez.fundaciones.login.ui.LoginActivity;
 import com.fundaciones.andrearodriguez.fundaciones.main.MainPresenter;
 import com.fundaciones.andrearodriguez.fundaciones.otroslist.ui.OtrosListActivity;
+import com.fundaciones.andrearodriguez.fundaciones.perdidoslist.ui.PerdidosListActivity;
 import com.fundaciones.andrearodriguez.fundaciones.perrolist.ui.PerroListActivity;
 
 import javax.inject.Inject;
@@ -161,7 +161,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentO);
                 break;
             case R.id.imgEncontrar:
-                Toast.makeText(getApplicationContext(), "Estamos trabajando en esta sección", Toast.LENGTH_SHORT).show();
+                Intent intentP = new Intent(this, PerdidosListActivity.class);
+                startActivity(intentP);
                 break;
             case R.id.imgEventos:
                 Intent intentE = new Intent(this, EventosListActivity.class);

@@ -1,26 +1,25 @@
 package com.fundaciones.andrearodriguez.fundaciones.domine;
 
-import com.fundaciones.andrearodriguez.fundaciones.entities.Paticas;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.fundaciones.andrearodriguez.fundaciones.entities.Paticas;
 
 import java.util.Map;
 
 /**
- * Created by andrearodriguez on 9/21/16.
+ * Created by andrearodriguez on 3/24/17.
  */
-public class FirebasePerrosAPI {
 
+public class FirebasePerdidosAPI {
     private Firebase firebase;
-    private ChildEventListener perrosEventListener;
+    private ChildEventListener perdidosEventListener;
 
-    public FirebasePerrosAPI(Firebase firebase) {
-        this.firebase = firebase.child("Perros");
+    public FirebasePerdidosAPI(Firebase firebase) {
+        this.firebase = firebase.child("Perdidos");
     }
-
     public void checkForData(final FirebaseActionListenerCallback listenerCallback){
         firebase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -39,8 +38,8 @@ public class FirebasePerrosAPI {
         });
     }
     public void subscribe(final FirebaseEventListenerCallback listenerCallback){
-        if (perrosEventListener == null){
-            perrosEventListener = new ChildEventListener() {
+        if (perdidosEventListener == null){
+            perdidosEventListener = new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     listenerCallback.onChildAdded(dataSnapshot);
@@ -66,12 +65,12 @@ public class FirebasePerrosAPI {
                     listenerCallback.onCancell(firebaseError);
                 }
             };
-            firebase.addChildEventListener(perrosEventListener);
+            firebase.addChildEventListener(perdidosEventListener);
         }
     }
     public void unsubscribe(){
-        if (perrosEventListener != null) {
-            firebase.removeEventListener(perrosEventListener);
+        if (perdidosEventListener != null) {
+            firebase.removeEventListener(perdidosEventListener);
         }
     }
     public String create(){
