@@ -114,7 +114,7 @@
     <string name="main_titles_eventos">Eventos</string>
     <string name="main_titles_perdidos">Perdidos</string>
     <string name="nombre_evento">Nombre del Evento</string>
-    <string name="lugar_evento">Lugar del Evento</string>
+    <string name="lugar_evento">Lugar</string>
     <string name="selecciona_fecha">Selecciona la fecha</string>
     <string name="selecciona_hora">Selecciona la hora</string>
     <string name="tipo_evento">Tipo de Evento</string>
