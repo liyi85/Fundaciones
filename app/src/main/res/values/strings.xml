@@ -98,6 +98,18 @@
         <item>OtrasAves</item>
     </string-array>
 
+    <string-array name="SelectEspeciePerdidos">
+        <item>Perro</item>
+        <item>Gato</item>
+        <item>Hamster</item>
+        <item>Paloma</item>
+        <item>Ratón</item>
+        <item>Conejo</item>
+        <item>Caballo</item>
+        <item>Otros</item>
+        <item>OtrasAves</item>
+    </string-array>
+
     <string-array name="SelectTipo">
         <item>Adopciones</item>
         <item>Donaciones</item>
@@ -128,5 +140,8 @@
     <string name="especie">Especie</string>
     <string name="fecha">Fecha</string>
     <string name="hora">Hora</string>
+    <string name="celular">Celular</string>
+    <string name="descripcion">Descripción</string>
+    <string name="email">Email</string>
 
 </resources>

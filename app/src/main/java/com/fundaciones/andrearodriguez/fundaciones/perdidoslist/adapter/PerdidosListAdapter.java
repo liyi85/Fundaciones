@@ -49,6 +49,7 @@ public class PerdidosListAdapter extends RecyclerView.Adapter<PerdidosListAdapte
         holder.txtNombre.setText(currenPerdido.getNombre());
         holder.txtSexo.setText(currenPerdido.getSexo());
         holder.txtEdad.setText(currenPerdido.getEdad());
+        holder.txtEspecie.setText(currenPerdido.getEspecie());
 
         holder.setOnItemClickListener(currenPerdido, clickListener);
         if (currenPerdido.isPublishedByMe()) {

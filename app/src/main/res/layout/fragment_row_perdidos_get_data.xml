@@ -1,0 +1,243 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/containerAddL">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:layout_width="140dp"
+                android:layout_height="150dp"
+                android:id="@+id/imgPerdido"
+                android:src="@android:drawable/ic_menu_camera"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/wraperTelefono">
+                    <EditText
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/txtPhone"
+                        android:layout_height="match_parent"
+                        android:inputType="phone"
+                        android:hint="@string/celular"
+                        android:layout_width="match_parent"
+                        style="@style/contenido"/>
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/wraperemail">
+                    <EditText
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/txtEmail"
+                        android:layout_height="match_parent"
+                        android:inputType="textEmailAddress"
+                        android:hint="@string/email"
+                        android:layout_width="match_parent"
+                        style="@style/contenido"/>
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/wrapercaracterisitcas">
+                    <EditText
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/txtCaracteristicas"
+                        android:layout_height="match_parent"
+                        android:hint="@string/descripcion"
+                        android:layout_width="match_parent"
+                        style="@style/contenido"/>
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.9"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/wrapernameperdido">
+                    <EditText
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/txtNombre"
+                        android:layout_height="match_parent"
+                        android:hint="@string/nombre"
+                        android:layout_width="match_parent"
+                        style="@style/contenido"/>
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.9"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/wraperedad"
+                        android:paddingBottom="10dp">
+                        <EditText
+                            android:layout_marginTop="10dp"
+                            android:id="@+id/txtEdad"
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:hint="@string/edad"
+                            style="@style/contenido" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <Spinner
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/spinnerEdad"
+                        android:paddingTop="15dp"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/especie"
+                    android:id="@+id/txtEspecie"
+                    android:paddingBottom="25dp"
+                    style="@style/contenido"/>
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinnerEspecie" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sexo"
+                    android:id="@+id/txtSexo"
+                    android:paddingBottom="25dp"
+                    style="@style/contenido"/>
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinnerSexo" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/esterilizado"
+                    android:id="@+id/txtEsteril"
+                    android:paddingBottom="25dp"
+                    style="@style/contenido"/>
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinnerEsteril"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/vacunado"
+                    android:id="@+id/txtVacunado"
+                    android:paddingBottom="25dp"
+                    style="@style/contenido"/>
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinnerVacuna" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/discapacidad"
+                    android:id="@+id/txtDiscapacidad"
+                    style="@style/contenido"/>
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinnerDiscapacidad" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

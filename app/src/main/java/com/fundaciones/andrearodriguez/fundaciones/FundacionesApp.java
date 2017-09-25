@@ -15,6 +15,10 @@ import com.fundaciones.andrearodriguez.fundaciones.addotros.di.AddOtroComponent;
 import com.fundaciones.andrearodriguez.fundaciones.addotros.di.AddOtrosModule;
 import com.fundaciones.andrearodriguez.fundaciones.addotros.di.DaggerAddOtroComponent;
 import com.fundaciones.andrearodriguez.fundaciones.addotros.ui.AddOtrosView;
+import com.fundaciones.andrearodriguez.fundaciones.addperdidos.di.AddPerdidosComponent;
+import com.fundaciones.andrearodriguez.fundaciones.addperdidos.di.AddPerdidosModule;
+import com.fundaciones.andrearodriguez.fundaciones.addperdidos.di.DaggerAddPerdidosComponent;
+import com.fundaciones.andrearodriguez.fundaciones.addperdidos.ui.AddPerdidosView;
 import com.fundaciones.andrearodriguez.fundaciones.addperro.di.AddPerroComponent;
 import com.fundaciones.andrearodriguez.fundaciones.addperro.di.AddPerroModule;
 import com.fundaciones.andrearodriguez.fundaciones.addperro.di.DaggerAddPerroComponent;
@@ -221,6 +225,16 @@ public class FundacionesApp extends Application {
                 .domainModule(domainModule)
                 .libsModule(new LibsModule(fragment))
                 .perdidosListModule(new PerdidosListModule(view, clickPerdidos))
+                .build();
+    }
+
+    public AddPerdidosComponent getAddPerdidosComponent (AddPerdidosView view){
+        return DaggerAddPerdidosComponent
+                .builder()
+                .fundacionAppModule(fundacionAppModule)
+                .domainModule(domainModule)
+                .libsModule(new LibsModule(null))
+                .addPerdidosModule(new AddPerdidosModule(view))
                 .build();
     }
 

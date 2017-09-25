@@ -1,7 +1,9 @@
 package com.fundaciones.andrearodriguez.fundaciones.perdidoslist.ui;
 
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -10,7 +12,9 @@ import android.provider.MediaStore;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,6 +29,7 @@ import android.widget.Toast;
 import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
 import com.fundaciones.andrearodriguez.fundaciones.FundacionesApp;
 import com.fundaciones.andrearodriguez.fundaciones.R;
+import com.fundaciones.andrearodriguez.fundaciones.addperdidos.ui.AddPerdidosFragment;
 import com.fundaciones.andrearodriguez.fundaciones.entities.Paticas;
 import com.fundaciones.andrearodriguez.fundaciones.perdidoslist.PerdidosListPresenter;
 import com.fundaciones.andrearodriguez.fundaciones.perdidoslist.adapter.OnItemClickPerdidos;
@@ -36,6 +41,7 @@ import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -176,5 +182,44 @@ public class PerdidosListFragment extends Fragment implements PerdidosListView, 
     @Override
     public void onDeleteClick(Paticas paticas) {
         presenter.removePerdido(paticas);
+    }
+
+    @OnClick(R.id.fab)
+    public void addPerdido() {
+        checkCameraPermission();
+        new AddPerdidosFragment().show(getActivity().getSupportFragmentManager(), getString(R.string.addcontact_messagge_title));
+    }
+
+    private void checkCameraPermission() {
+        if (ContextCompat.checkSelfPermission(getActivity(),
+                Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+                    Manifest.permission.CAMERA)) {
+
+            } else {
+
+                ActivityCompat.requestPermissions(getActivity(),
+                        new String[]{Manifest.permission.CAMERA},
+                        MY_PERMISSIONS_REQUEST_CAMERA);
+
+            }
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode,String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_CAMERA: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                } else {
+
+                }
+                return;
+            }
+        }
     }
 }
