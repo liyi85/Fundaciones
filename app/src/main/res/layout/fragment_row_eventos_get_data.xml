@@ -37,10 +37,9 @@
                         android:layout_marginTop="10dp"
                         android:id="@+id/txtNombreE"
                         android:layout_height="match_parent"
-                        android:hint="Nombre del Evento"
-                        android:textColor="@android:color/black"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:layout_width="match_parent" />
+                        android:hint="@string/nombre_evento"
+                        android:layout_width="match_parent"
+                        style="@style/subtitulos"/>
                 </android.support.design.widget.TextInputLayout>
 
             </LinearLayout>
@@ -58,10 +57,9 @@
                         android:layout_marginTop="10dp"
                         android:id="@+id/txtLugar"
                         android:layout_height="match_parent"
-                        android:hint="Lugar del Evento"
-                        android:textColor="@android:color/black"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:layout_width="match_parent" />
+                        android:hint="@string/lugar_evento"
+                        android:layout_width="match_parent"
+                        style="@style/contenido"/>
                 </android.support.design.widget.TextInputLayout>
 
             </LinearLayout>
@@ -74,10 +72,10 @@
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="Selecciona la fecha"
+                    android:hint="@string/selecciona_fecha"
                     android:id="@+id/etFecha"
                     android:layout_centerHorizontal="true"
-                    android:textAppearance="?android:attr/textAppearanceSmall"/>
+                    style="@style/contenido"/>
 
             </LinearLayout>
 
@@ -88,10 +86,10 @@
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="Selecciona la hora"
+                    android:hint="@string/selecciona_hora"
                     android:id="@+id/etHora"
                     android:layout_centerHorizontal="true"
-                    android:textAppearance="?android:attr/textAppearanceSmall"/>
+                    style="@style/contenido"/>
 
 
 
@@ -104,15 +102,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tipo de Evento"
+                    android:text="@string/tipo_evento"
                     android:id="@+id/txtTipo"
-                    android:paddingBottom="25dp"/>
+                    android:paddingBottom="25dp"
+                    style="@style/contenido"/>
 
                 <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/spinnerTipo"
-                    />
+                    style="@style/contenido"/>
             </LinearLayout>
         </LinearLayout>
 

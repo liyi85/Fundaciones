@@ -41,12 +41,11 @@
                 android:layout_marginTop="10dp"
                 android:id="@+id/txtNombre"
                 android:layout_width="wrap_content"
-                android:layout_weight="0.6"
+                android:layout_weight="1"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
-                android:hint="Nombre"
-                android:textColor="@android:color/black"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:hint="@string/nombre"
+                style="@style/titulos" />
 
             <TextView
                 android:id="@+id/txtEspecie"
@@ -54,8 +53,8 @@
                 android:layout_weight="0.6"
                 android:layout_height="0dp"
                 android:gravity="center"
-                android:hint="Especie"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:hint="@string/especie"
+                style="@style/contenido" />
 
             <TextView
                 android:id="@+id/txtSexo"
@@ -63,10 +62,8 @@
                 android:layout_weight="0.6"
                 android:layout_height="0dp"
                 android:gravity="center"
-                android:hint="Sexo"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
-
-
+                android:hint="@string/sexo"
+                style="@style/contenido" />
 
             <TextView
                 android:id="@+id/txtEdad"
@@ -74,10 +71,8 @@
                 android:layout_weight="0.6"
                 android:layout_height="0dp"
                 android:gravity="center"
-                android:hint="Edad"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
-
-
+                android:hint="@string/edad"
+                style="@style/contenido" />
 
             <LinearLayout
                 android:layout_width="wrap_content"

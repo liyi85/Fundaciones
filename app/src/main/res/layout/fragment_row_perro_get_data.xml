@@ -37,10 +37,9 @@
                 android:layout_marginTop="10dp"
                 android:id="@+id/txtNombre"
                 android:layout_height="match_parent"
-                android:hint="Nombre"
-                android:textColor="@android:color/black"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_width="match_parent" />
+                android:hint="@string/nombre"
+                android:layout_width="match_parent"
+                style="@style/subtitulos"/>
         </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>
@@ -67,8 +66,8 @@
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:inputType="number"
-                android:hint="Edad"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:hint="@string/edad"
+                style="@style/contenido" />
         </android.support.design.widget.TextInputLayout>
 
         <Spinner
@@ -87,9 +86,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sexo"
+            android:text="@string/sexo"
             android:id="@+id/txtSexo"
-            android:paddingBottom="25dp"/>
+            android:paddingBottom="25dp"
+            style="@style/contenido"/>
 
         <Spinner
             android:layout_width="wrap_content"
@@ -103,9 +103,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tamaño"
+            android:text="@string/tamano"
             android:id="@+id/txtTamano"
-            android:paddingBottom="25dp"/>
+            android:paddingBottom="25dp"
+            style="@style/contenido"/>
 
         <Spinner
             android:layout_width="wrap_content"
@@ -122,9 +123,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Esterilizado"
+            android:text="@string/esterilizado"
             android:id="@+id/txtEsteril"
-            android:paddingBottom="25dp"/>
+            android:paddingBottom="25dp"
+            style="@style/contenido"/>
 
         <Spinner
             android:layout_width="wrap_content"
@@ -139,9 +141,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Vacunado"
+            android:text="@string/vacunado"
             android:id="@+id/txtVacunado"
-            android:paddingBottom="25dp"/>
+            android:paddingBottom="25dp"
+            style="@style/contenido"/>
 
         <Spinner
             android:layout_width="wrap_content"
@@ -156,8 +159,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Discapacidad"
-                    android:id="@+id/txtDiscapacidad" />
+                    android:text="@string/discapacidad"
+                    android:id="@+id/txtDiscapacidad"
+                    style="@style/contenido"/>
 
                 <Spinner
                     android:layout_width="wrap_content"
