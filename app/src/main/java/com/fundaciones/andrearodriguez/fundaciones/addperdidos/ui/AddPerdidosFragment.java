@@ -87,10 +87,6 @@ public class AddPerdidosFragment extends DialogFragment implements DialogInterfa
     TextView txtSexo;
     @Bind(R.id.spinnerSexo)
     Spinner spinnerSexo;
-    @Bind(R.id.txtTamano)
-    TextView txtTamano;
-    @Bind(R.id.spinnerTamano)
-    Spinner spinnerTamano;
     @Bind(R.id.txtEsteril)
     TextView txtEsteril;
     @Bind(R.id.spinnerEsteril)
@@ -308,10 +304,10 @@ public class AddPerdidosFragment extends DialogFragment implements DialogInterfa
                     String path = photoPath;
 
                     if (nombre == "" || edad == " Años" || sexo == "Hembra" || path == null) {
-                        Snackbar.make(containerAddL, "Todos los datos son necesarios", Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(getActivity().findViewById(android.R.id.content), R.string.ingresar_datos, 3000).show();
                     } else if (nombre != "" && edad != " Años" && sexo != "Hembra" && especie != null && esteril != null && vacuna != null && path != null) {
                         addPerdidosPresenter.uploadPhoto(nombre, especie, edad, sexo, photoPath, esteril, vacuna, discapacidad);
-                        Log.i("sale", "" + nombre + " " + edad + " " + sexo + " " + especie + " " + photoPath + " " + esteril + " " + vacuna);
+                        Log.i("datosPeridos", "" + nombre + " " + edad + " " + sexo + " " + especie + " " + photoPath + " " + esteril + " " + vacuna);
 
                     }
 
@@ -323,6 +319,8 @@ public class AddPerdidosFragment extends DialogFragment implements DialogInterfa
             negativeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    dialog.cancel();
+                    Snackbar.make(getActivity().findViewById(android.R.id.content), R.string.cancelado , 3000).show();
                     dismiss();
                 }
             });
@@ -429,11 +427,11 @@ public class AddPerdidosFragment extends DialogFragment implements DialogInterfa
     }
 
     private void showSnackbar(String msg) {
-        Snackbar.make(containerAddL, msg, Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(getActivity().findViewById(android.R.id.content), msg, 3000).show();
     }
 
     private void showSnackbar(int strResult) {
-        Snackbar.make(containerAddL, strResult, Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(getActivity().findViewById(android.R.id.content), strResult, 3000).show();
     }
 
     private void addToGallery() {

@@ -299,10 +299,10 @@ public class AddGatoFragment extends DialogFragment implements DialogInterface.O
                     String path = photoPath;
 
                     if (nombre == "" || edad == " Años" || sexo == "Hembra" || path == null) {
-                        Snackbar.make(containerAddP, "Todos los datos son necesarios", Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(getActivity().findViewById(android.R.id.content), R.string.ingresar_datos, 3000).show();
                     } else if (nombre != "" && edad != " Años" && sexo != "Hembra" && tamano != null && esteril != null && vacuna != null && path != null) {
                         addGatoPresenter.uploadPhoto(nombre, edad, sexo, tamano, photoPath, esteril, vacuna, discapacidad);
-                        Log.i("que sale", "" + nombre + " " + edad + " " + sexo + " " + tamano + " " + photoPath + " " + esteril + " " + vacuna);
+                        Log.i("datosGato", "" + nombre + " " + edad + " " + sexo + " " + tamano + " " + photoPath + " " + esteril + " " + vacuna);
 
                     }
 
@@ -314,6 +314,8 @@ public class AddGatoFragment extends DialogFragment implements DialogInterface.O
             negativeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    dialog.cancel();
+                    Snackbar.make(getActivity().findViewById(android.R.id.content), R.string.cancelado , 3000).show();
                     dismiss();
                 }
             });
@@ -418,11 +420,11 @@ public class AddGatoFragment extends DialogFragment implements DialogInterface.O
     }
 
     private void showSnackbar(String msg) {
-        Snackbar.make(containerAddP, msg, Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(getActivity().findViewById(android.R.id.content), msg, 3000).show();
     }
 
     private void showSnackbar(int strResult) {
-        Snackbar.make(containerAddP, strResult, Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(getActivity().findViewById(android.R.id.content), strResult, 3000).show();
     }
 
     private void addToGallery() {

@@ -29,7 +29,7 @@
     <string name="main.title.gatos">Gatos</string>
     <string name="main.title.otros">Otros</string>
     <string name="main.title.perdidos">Perdidos y encontrados</string>
-    <string name="main.notice.upload.init">En proceso de publicación</string>
+    <string name="main.notice.upload.init">En proceso de publicación, revisar en unos minutos</string>
     <string name="main.notice.upload.complete">Publicado exitosamente</string>
     <string name="main.error.dispatch.camera">Error al crear archivo</string>
     <string name="menu.action.logout">Cerrar sesión</string>
@@ -143,5 +143,8 @@
     <string name="celular">Celular</string>
     <string name="descripcion">Descripción</string>
     <string name="email">Email</string>
+    <string name="ingresar_datos">Todos los datos son necesarios</string>
+    <string name="exitos">Agregado con exito</string>
+    <string name="cancelado">Acción cacelada</string>
 
 </resources>

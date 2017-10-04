@@ -117,6 +117,7 @@ public class AddEventoFragment extends DialogFragment implements DialogInterface
                 .setNegativeButton(R.string.addcontact_messagge_cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
 
                     }
                 });
@@ -195,10 +196,11 @@ public class AddEventoFragment extends DialogFragment implements DialogInterface
                     String path = photoPath;
 
                     if (nombre == "" || fecha == "" || hora == "" || lugar == "" || tipoe == "" || path == null) {
-                        Snackbar.make(containerAddE, "Todos los datos son necesarios", Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(getActivity().findViewById(android.R.id.content), R.string.ingresar_datos, 3000).show();
+
                     } else if (nombre != "" && fecha != "" && hora != "" && lugar != "" && tipoe != "" && path != null) {
                         addEventoPresenter.uploadPhoto(nombre, fecha, lugar, hora, photoPath, tipoe);
-                        Log.i("que sale del evento", "" + nombre + " " + fecha + " " + hora + " " + lugar + " " + photoPath + " " + tipoe);
+                        Log.i("datosEvento", " " + photoPath);
                     }
 
                     dismiss();
@@ -208,6 +210,8 @@ public class AddEventoFragment extends DialogFragment implements DialogInterface
             negativeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    dialog.cancel();
+                    Snackbar.make(getActivity().findViewById(android.R.id.content), R.string.cancelado , 3000).show();
                     dismiss();
                 }
             });
@@ -313,11 +317,11 @@ public class AddEventoFragment extends DialogFragment implements DialogInterface
     }
 
     private void showSnackbar(String msg) {
-        Snackbar.make(containerAddE, msg, Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(getActivity().findViewById(android.R.id.content), msg, 3000).show();
     }
 
     private void showSnackbar(int strResult) {
-        Snackbar.make(containerAddE, strResult, Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(getActivity().findViewById(android.R.id.content), strResult,3000).show();
     }
 
     private void addToGallery() {
