@@ -3,6 +3,7 @@ package com.fundaciones.andrearodriguez.fundaciones.perrolist.ui;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
@@ -68,6 +69,11 @@ public class PerroListFragment extends Fragment implements PerroListView, OnItem
 
     @Inject
     PerroListPresenter presenter;
+
+    @Inject
+    SharedPreferences sharedPreferences;
+
+    private FundacionesApp app;
 
 
     private static final int MY_PERMISSIONS_REQUEST_CAMERA = 1 ;
